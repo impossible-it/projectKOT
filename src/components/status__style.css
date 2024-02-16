@@ -1,0 +1,388 @@
+
+.status-block {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    margin-top: 62px;
+}
+.status-block > h1 {
+    position: relative;
+    color: white;
+}
+
+.status-block > h1::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white; 
+    position: absolute;
+    margin-top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.status-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: white;
+    align-items: center;
+    margin-top: 100px;
+}
+
+
+
+/************************************************************************/
+.btn-confirm { 
+    font-family: 'Open Sans';
+    width: 50%;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight:600;
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+
+}
+
+.btn-confirm:hover { 
+  background-color: #3B3938;
+  color: white;
+  transition: 0.3s;
+}
+
+
+
+
+
+
+
+/************************************************************************/
+.confirm-logo-wait {
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    width: 125px;
+    height: 125px;
+    background-color: #FFA800;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+.confirm-logo-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 63px;
+    height: 63px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    overflow: hidden; 
+}
+.confirm-logo-mark-wait {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    transform: translate(22.5%, 22.5%);
+    border-radius: 50%;
+    border: 2px solid #FFA800;
+}
+.confirm-logo-hour,
+.confirm-logo-minute {
+  position: absolute;
+  width: 2.5px;
+  background-color: #FFA800;
+  top: 50%;
+  left: 50%;
+  transform-origin: bottom;
+  transform: translateX(-50%) translateY(-100%);
+}
+
+.confirm-logo-hour {
+  height: 35%;
+  transform: translateX(-50%) translateY(-100%) rotate(0deg);
+}
+
+.confirm-logo-minute {
+  height: 30%;
+  transform: translateX(-50%) translateY(-100%) rotate(270deg);
+} 
+
+
+/************************************************************************/
+.status-block-confirm {
+  display: flex;
+  text-align: center;
+  position: relative;
+  width: 80%;
+  height: 80%;
+  background-color: #3B3938;
+  border-radius: 10px;
+  margin: 20px;
+  color: white;
+  
+  
+}
+
+.status-block-confirm > img {
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;    
+  transform: translateX(-50%);
+}
+
+.status-block-confirm > h2 {
+  position: absolute;
+  top: calc(30%); /* Настройте отступ ниже картинки */
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 30px;
+  font-family: 'Open Sans';
+  font-size: 20px;
+  width: 60%;
+}
+
+.status-block-confirm > h4 {
+  font-family: 'Open Sans';
+  font-size: 20px;
+  position: absolute;
+  top: calc(55%);
+  left: 50%;
+  transform: translateX(-50%);
+  color: #A2A2A2;
+  line-height: 24px;
+  width: 80%;
+
+}
+
+.status-block-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 0;
+  margin-bottom: 20px; /* Регулируйте интервал между элементами по вертикали */
+  
+}
+
+.status-block-text > h1 {
+  font-size: 24px;
+  font-family: 'Open Sans';
+}
+.status-block-text > p {
+  font-size: 16px;
+  font-family: 'Open Sans';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .confirm-logo-green {
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    width: 125px;
+    height: 125px;
+    background-color: #2BA530;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    
+  }
+  .confirm-logo-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 63px;
+    height: 63px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    overflow: hidden; 
+
+   }
+   .confirm-logo-mark-green {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    transform: rotate(315deg) scaleX(-1);
+    width: 40%;
+    height: 20%;
+    border-bottom: 4px solid #2BA530;
+    border-right: 4px solid  #2BA530;
+  }  
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************************************************/
+/************************************************************************/
+ .confirm-logo-red {
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    width: 125px;
+    height: 125px;
+    background-color: rgb(252, 7, 7);
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+  .confirm-logo-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 63px;
+    height: 63px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    overflow: hidden; 
+   }
+  
+  .confirm-logo-mark-red {
+    width: 40px;
+    height: 8px;
+    background-color: rgb(252, 7, 7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+ 
+  .confirm-logo-mark-red::after {
+    content: "";
+    width: 40px;
+    height: 8px;
+    background-color: rgb(252, 7, 7);
+    position: absolute;
+  }
+  
+  .confirm-logo-mark-red::before {
+    transform: translateY(-50%) rotate(-45deg);
+  }
+  
+  .confirm-logo-mark-red::after {
+    transform: translate(-50%) rotate(90deg);
+  }  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @media only screen and (max-width: 768px) {
+    .status-block {
+      width: 100%;
+    }
+    .status-container {
+      width: 80%;
+      height: 60%;
+      
+    }
+    .status-block-confirm {
+      width: 100%;
+      height: 60%;
+    }
+    .btn-confirm {
+      padding: 10px;
+      width: 100%; /* Растягиваем кнопку на всю ширину при маленьких экранах */
+    }
+    .status-block-confirm > h4 {
+      font-size: 16px;
+    }
+    .status-block-confirm > h2 {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 460px) {
+  .status-container {
+    width: 80%;
+    height: 60%;
+    
+  }
+  .status-block > h1 {
+    font-size: 24px;
+  }
+  .status-block-text > h1 {
+    font-size: 16px;
+    
+  }
+  .status-block-text > p {
+    
+    font-size: 12px;
+  }
+  .status-block-confirm > h2 {
+    margin-top: 40px;
+    font-size: 14px;
+  }
+  .status-block-confirm > h4 {
+    margin-top: 30px;
+
+    font-size: 14px;
+  }
+  .btn-confirm {
+    font-size: 16px;
+    padding: 5px;
+    width: 90%; /* Растягиваем кнопку на всю ширину при маленьких экранах */
+  }
+  
+}

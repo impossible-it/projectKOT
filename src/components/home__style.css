@@ -1,0 +1,352 @@
+* {
+    font-family: 'Open Sans';
+
+}
+/* BLOCK CHOOSE COMPANY */
+
+.main {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  margin-top: 60px;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.main > h1 {
+  color: white; 
+  margin: 20px 0;
+  padding: 0;
+
+
+}
+.main > h1::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white; 
+  position: absolute;
+  margin-top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.mainpage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    height: auto;
+    width: 70vw;
+    background-color: black;
+    margin-bottom: 20px;
+  }
+  
+  .main_company {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 220px;
+    width: 34%;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    margin: 30px;
+    position: relative;
+    
+  }
+  
+  .main_company_content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 65%;
+    
+  }
+  
+  .main_company_content > img {
+    width: 90px;
+    height: 90px;
+    border-radius: 30;
+    background-color: white;
+    margin: 10px 20px;
+    
+  }
+  
+  .main_company_content > h2 {
+    font-size: 24px;
+    font-weight: 300;
+    padding: 20px;
+    max-width: 250px;
+    text-align: justify; /* Выравниваем текст по центру */
+    margin-left: 10px;
+    margin-top: 10px;
+    line-height: 24px;
+  }
+
+  
+  .main_company_button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; /* Выравниваем кнопку по вертикали */
+    width: 90%; /* Ширина кнопки */
+    height: 100%;
+    min-height: 100px;
+    margin-top: 10px;
+  }  
+  .main_company_button > button {
+    background-color: #3B3938;
+    border-radius: 10px;
+    border: none;
+    width: 70%;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+    height: 50px;
+    z-index: 98;
+
+  }
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------  */
+/* ---------------------------------------------------------  */
+/* 4 круга возле блоков , стилизация каждого, цвета разные  */
+  .circle-container_first {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .circle-container_first::before,
+  .circle-container_first::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    bottom: 5px;
+    left: -80px;
+  }
+  .circle-container_first::before {
+    width: 120px; /* Размер первого (большего) круга */
+    height: 120px;/* Цвет первого круга */ 
+    background: linear-gradient(177.41deg, #3387E9 1.62%, #3CD24B 47.98%, #F9F136 74.65%, #41CD2A 101.08%);
+  }
+  .circle-container_first::after {
+    width: 85px; /* Размер второго (меньшего) круга */
+    height: 85px;/* Цвет второго круга */
+    background: linear-gradient(180deg, #2ACF26 0%, #2DB3EC 100%);
+    left: 0px;
+    top: 170px;
+  }
+/* ---------------------------------------------------------  */
+/* ---------------------------------------------------------  */
+.circle-container_second {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.circle-container_second::before,
+.circle-container_second::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  bottom: 5px;
+  left: -80px;
+}
+.circle-container_second::before {
+  width: 120px; /* Размер первого (большего) круга */
+  height: 120px;/* Цвет первого круга */
+  background: linear-gradient(94.55deg, #FFFF99 -80.8%, #E6B800 123.45%);
+}
+.circle-container_second::after {
+  width: 85px; /* Размер второго (меньшего) круга */
+  height: 85px;/* Цвет второго круга */
+  background: linear-gradient(153.81deg, #FFFF99 -20.49%, #CC9900 106.09%);
+  left: 0px;
+  top: 170px;
+}
+/* ---------------------------------------------------------  */
+/* ---------------------------------------------------------  */
+.circle-container_third {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.circle-container_third::before,
+.circle-container_third::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  bottom: 5px;
+  left: -80px;
+}
+.circle-container_third::before {
+  width: 120px; /* Размер первого (большего) круга */
+  height: 120px; /* Цвет первого круга */ 
+  background: linear-gradient(168.61deg, rgba(255, 255, 255, 0.99) -43.31%, #3952D2 43.74%, #40AFFF 100.57%);
+}
+.circle-container_third::after {
+  width: 85px; /* Размер второго (меньшего) круга */
+  height: 85px; /* Цвет второго круга */
+  background: linear-gradient(180deg, #2ACF26 0%, #2DB3EC 100%);background: linear-gradient(245.37deg, #FFFCFC 4.66%, #82A5EA 46.88%, #1558DA 109.7%);
+  left: 0px;
+  top: 170px;
+}
+/* ---------------------------------------------------------  */
+/* ---------------------------------------------------------  */
+.circle-container_fourth {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.circle-container_fourth::before,
+.circle-container_fourth::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  bottom: 5px;
+  left: -80px;
+}
+.circle-container_fourth::before {
+  width: 120px; /* Размер первого (большего) круга */
+  height: 120px; /* Цвет первого круга */ 
+  background: linear-gradient(120deg, #6A5ACD -50%, #333333 150%);
+}
+.circle-container_fourth::after {
+  width: 85px; /* Размер второго (меньшего) круга */
+  height: 85px; /* Цвет второго круга */
+  background: linear-gradient(45deg, #6A5ACD -20%, #333333 120%);
+  left: 0px;
+  top: 170px;
+}
+/* ---------------------------------------------------------  */
+/* ---------------------------------------------------------  */
+/* -----------end circle styles          ------------------  */
+/* ---------------------------------------------------------  */
+
+
+/* ----------- telephone         ------------------  */
+/* ---------------------------------------------------------  */
+
+@media only screen and (max-width: 868px) {
+  .mainpage {
+      width: 80%; /* Изменяем ширину на весь экран */
+
+  }
+
+  .main_company {
+      width: 70%; /* Растягиваем блок на всю ширину */
+      min-height: auto; /* Убираем минимальную высоту */
+  }
+  .main_company:first-child {
+    margin-top: 80px;
+  }
+
+  .main_company_content {
+      flex-direction: column; /* Столбцовая раскладка для содержимого */
+      height: auto; /* Убираем фиксированную высоту */
+  }
+
+  .main_company_content > img {
+      width: 50px; /* Уменьшаем размер изображения */
+      height: 50px;
+       /* Центрируем изображение */
+  }
+
+  .main_company_content > h2 {
+      font-size: 18px; /* Уменьшаем размер текста */
+      max-width: 100%; /* Максимальная ширина для текста */
+      margin: 10px 0; /* Изменяем отступы */
+      text-align: center; /* Выравниваем по центру */
+      line-height: 18px;
+      padding: 10px;
+  }
+
+  .main_company_button {
+      justify-content: center; /* Выравниваем кнопку по центру */
+      width: 100%; /* Растягиваем кнопку на всю ширину */
+      margin-bottom: 20px;
+      min-height: auto;
+  }
+
+  .main_company_button > button {
+      width: 80%; /* Уменьшаем ширину кнопки */
+  }
+
+  /* Стили для кругов */
+  .circle-container_first::before,
+  .circle-container_first::after,
+  .circle-container_second::before,
+  .circle-container_second::after,
+  .circle-container_third::before,
+  .circle-container_third::after,
+  .circle-container_fourth::before,
+  .circle-container_fourth::after {
+      left: 75%; /* Уменьшаем отступ слева для кругов */
+      top: -20%;
+  }
+  .circle-container_first::after,
+  .circle-container_second::after,
+  .circle-container_third::after,
+  .circle-container_fourth::after {
+      left: 60%;
+  }
+}
+
+
+
+
+/* ----------- note pad  ------------------  */
+/* ---------------------------------------------------------  */
+
+
+@media only screen and (min-width: 869px) and (max-width: 1148px) {
+  .mainpage {
+      width: 90vw; /* Изменяем ширину */
+      
+  }
+
+  .main_company {
+      width: 35%; /* Изменяем ширину блока */
+  }
+
+
+  .main_company_content > h2 {
+      font-size: 20px; /* Изменяем размер текста */
+  }
+  .main_company_content > img {
+    font-size: 20px; /* Изменяем размер текста */
+}
+
+  .main_company_button {
+      min-height: 0px;
+  }
+
+  /* Стили для кругов */
+  .circle-container_first::before,
+  .circle-container_first::after,
+  .circle-container_second::before,
+  .circle-container_second::after,
+  .circle-container_third::before,
+  .circle-container_third::after,
+  .circle-container_fourth::before,
+  .circle-container_fourth::after {
+      left: -20px; /* Изменяем отступ слева для кругов */
+  }
+  .main_company_button > button {
+    width: 50%;
+  }
+}

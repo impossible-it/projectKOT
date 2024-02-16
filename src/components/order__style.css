@@ -1,0 +1,376 @@
+* {
+    font-family: 'Open Sans';
+}
+.order-block {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    height: 85vh;
+    width: 100%;
+    background-color: black;
+    margin-top: 60px;    
+}
+.order-block > h1 {
+    position: relative;
+    color: white;
+}
+
+.order-block > h1::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white; 
+    position: absolute;
+    margin-top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.order-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    max-height: 800px;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    text-align: flex-start;
+    background-color: white;
+    align-items: center;
+    /**/
+    margin-top: 100px;
+}
+
+
+/* Container for text */
+.order-container-info {  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    /* background-color: rgb(68, 68, 68);
+    border-radius: 10px;
+    color: white;
+    width: 70%; */
+}
+.order-container-info > p {
+    margin: 2px;   /* Оступ между словами */
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+.order-container-info > h3 {
+    margin: 2px;   /* Оступ между словами */
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* card block */
+.order-container-cardblock {
+    width: 95%;
+    height: 330px;
+    background-color: rgb(68, 68, 68);
+    opacity: 1;
+    padding: -5px;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*payment*/
+.order-container-payment {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    border-radius: 1%;
+    background-color: #BFBFBF;  
+    /* box-shadow: 1px 1px 4px 1px black; */
+    position: relative;
+    top: 13%;
+    opacity: 0.8;
+    
+}
+.payment-photo {
+    font-size: 48px;
+
+    
+}
+.payment-btn  {
+    position: relative;
+    top: 3px;
+    background:#BFBFBF;    
+    font-size: 32px;
+    color: rgb(10, 10, 10);
+    border: none;
+}
+.payment-btn:hover {
+    color: #C50000;
+}
+
+
+.order-container-payment > h1 {
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    font-size: 26px;
+    letter-spacing: 3px;
+    text-shadow: 0px 1px 5px rgb(255, 255, 255);
+    margin-left: 20px;
+    font-weight: 500;
+  }
+/*coment*/
+.order-container-coment {
+    position:relative;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    top: 13%;
+    width: 90%;
+    height: 150px;
+    margin: 20px 20px;
+    color: #BFBFBF;
+    margin-left: 30px;
+    
+    
+    /* box-shadow: 1px 1px 2px 1px black; */
+ }
+.order-container-coment-logo {
+    font-size: 42px;
+ }
+ .order-container-coment-text {
+    font-size: 15px;
+    
+ }
+ .order-container-coment-text > p {
+    padding: 10px;
+    margin: 2% 0px;
+    line-height: 16px;
+ }
+.order-container-coment-text > p::before {
+    content: "\00B7"; /* Юникод для точки */
+    margin-right: 4px; /* Регулируйте отступ, если необходимо */
+    font-weight: bold; /* Делаем точку жирнее */
+
+}
+ .order-container-coment > svg {
+    display: flex;
+ }
+
+ .order-container-coment > p {
+     line-height: 16px;
+    font-size: 15px;
+     margin-bottom: 10px;
+    
+ }
+
+
+
+
+
+/*time*/
+.order-container-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 1px 1px 2px 1px black; */
+    width: 65%;
+    height: 7.5%;
+    border-radius: 10px;
+    background-color:#ffffff;
+    
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+}
+.order-container-time > div {
+    color: #C50000;
+    text-shadow: 0px 0px 1px black;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+    line-height: 20px;
+    
+}
+
+
+
+
+/*button*/
+.order-container-btn {
+    position: relative;
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-right: 10px;
+
+}
+.order-container-btn > button {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight:600;
+    /* box-shadow: 1px 1px 2px 1px black; */
+
+}
+.btn-pay {
+    flex: 0 0 auto;
+    background-color: #2BA530;
+    border: 1px solid  #2BA530;
+    color: white;
+}
+
+.btn-pay:hover {
+    transition:cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+}
+
+.btn-help {
+    flex: 0 0 auto; /* Занимает 20% ширины, не увеличивается и не уменьшается */
+    background-color:#BFBFBF;
+    border: 1px solid #BFBFBF;
+    color: white;
+}
+.btn-cancel:hover {
+    border: 2px solid black;
+    transition:cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+.btn-cancel {
+    flex: 0 0 auto; 
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+}
+.btn-help:hover {
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    transition:cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .order-block {
+        height: 100vh;
+        
+    }
+
+    .order-container {
+        padding: 10px;
+        height: 110vh;
+        width: 90%;
+        max-height: 670px; 
+    }
+
+    .order-container-info {
+        flex-direction: row;
+        
+    }
+    .order-container-info > p {
+        font-size: 12px;
+    }
+    .order-container-info > h3{
+       font-size: 14px; 
+    }
+
+    .order-container-coment,
+    .order-container-time,
+    .order-container-btn {
+        width: 90%;
+    }
+
+    .order-container-coment,
+    .order-container-time {
+        top: 10%; /* Уменьшаем отступ сверху */
+    }
+
+    .order-container-btn {
+        flex-direction: column;
+    }
+
+    .order-container-btn > button {
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px;
+    }
+    .order-container-time {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 545px) {
+    .order-block {
+        min-height: 115vh;
+        
+    }
+    .order-container-info > p {
+        font-size: 8px;
+    }
+    .order-container-info > h3{
+       font-size: 8px; 
+    }
+    .order-container {
+        max-height: 600px; 
+        margin: 0px;
+        margin-top: 100px;
+
+    }
+    .order-container-payment > h1 {
+        font-size: 16px;
+        margin-left: 5px;
+    }
+    .order-container-payment > svg {
+        font-size: 24px;
+        margin-left: 2px;
+        
+    }
+    .order-container-btn > button {
+        padding: 5px;
+    }
+    .payment-btn {
+        font-size: 20px;
+    }
+    .order-container-coment {
+        width: 95%;
+        margin: 15px 15px;
+    }
+    .order-container-coment-text {
+        font-size: 10px;
+    }
+    .order-container-time {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .order-block {
+        height: 80vh;        
+    }
+}

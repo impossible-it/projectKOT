@@ -1,0 +1,265 @@
+.block {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    height: 95vh;
+    width: 100%;
+    background-color: black;
+    padding-top: 65px;
+}
+
+.block > h1 {
+    position: relative;
+    color: white;
+}
+
+.block > h1::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white; 
+    position: absolute;
+    margin: 20px 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    max-height: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: white;
+    margin-top: 100px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 20px;
+    margin: 15px 0;
+    background-color: #D9D9D9;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 0;
+}
+.form-input::placeholder {
+    color:
+    #909090; /* Желаемый цвет текста placeholder */
+    font-size: 16px;
+    
+}
+
+/* Удаление границ на формах */
+:focus-visible {
+    outline: 0;
+}
+
+.form-container-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.form-container-logo > img {
+    border-radius: 50%;
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+    
+}
+
+.form-container > form > p {
+    font-size: 12px;
+    color: rgb(212, 3, 3);
+    line-height: 1px;
+    font-weight: bold;
+}
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.checkbox-container > a {
+    color: grey;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.checkbox-container input {
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border: 2px solid #6b6b6b; /* grey borders */
+    border-radius: 4px;
+    background-color: #fff; /* white background */
+    box-shadow: 0px 0px 3px .1px black;
+
+}
+.checkbox-container > label > p {
+    margin-left: 20px;
+}
+
+.checkbox-container input:checked {
+    background-color: #fff; /* white background when checked */
+}
+
+.checkbox-container input:checked::before {
+    content: '\2713'; /* grey checkmark */
+    transform: scale(2);
+    display: block;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    margin: -1px;
+    color: #383838; /* grey color for the checkmark */
+}
+
+.submit-button {
+    background-color: #3B3938;
+    color: #fcfcfc;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 50%;
+    margin-top: 15px; /* Add space between the checkbox and the button */
+    font-weight: 600;
+    font-size: 16px;
+
+}
+.clear-button {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 20%;
+    margin-top: 15px; /* Add space between the checkbox and the button */
+    margin: 20px;
+    font-weight: bold;
+    font-weight: 600;
+    font-size: 16px;
+
+}
+.clear-button:hover {
+    border: 2px solid black;
+    font-weight: bold;
+
+}
+.submit-button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    font-weight: bold;
+}
+/* Responsive Styles */
+
+
+/* Add more media queries as needed for different screen sizes */
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .block {
+        height: 120vh;
+        padding-top: 50px;
+    }
+
+    .block > h1 {
+        text-align: center;
+    }
+
+    .form-container {
+        width: 80%;
+        margin-top: 150px;
+        max-height: none;
+    }
+
+    .form-input {
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    .form-container-logo {
+        
+        justify-content: center;
+    }
+
+    .form-container-logo > img {
+        margin-left: 20px;
+    }
+
+    .submit-button,
+    .clear-button {
+        width: 90%;
+        margin: 10px 0;
+        padding: 10px;
+    }
+    
+    .checkbox-container {
+        margin: 5px;
+        justify-content: center;
+    
+    }
+    .checkbox-container > label > p {
+        line-height: 14px;
+        font-size: 12px;
+    }
+
+    .checkbox-container input {
+        width: 24px;
+        height: 24px;
+    }
+
+    .checkbox-container input:checked::before {
+        width: 20px;
+        height: 26px;
+        line-height: 24px;
+    }
+
+    .form-container > form > p {
+        font-size: 12px;
+        line-height: 0;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .block {
+        height: 150vh;
+        padding-top: 50px;
+    }
+    .checkbox-container {
+        justify-content: center;
+    }
+
+}
+@media only screen and (min-width: 300px) and (max-width: 500px) {
+    .form-container > form > p {
+        font-size: 8px;
+        line-height: 0;
+    }
+
+}
