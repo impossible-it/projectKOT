@@ -118,9 +118,16 @@ const Order: React.FC<FormProps> = ({ client_number, name, sum , photo, card, or
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
     };
   
-  console.log(`https://cardapi.top/api/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`);
   
-  // axios.get(`https://cardapi.top/api/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`)
+  // const instance = axios.create({
+  //   baseURL: 'https://cardapi.top/api/',
+  //   timeout: 1000,
+  //   headers: {'X-Custom-Header': 'foobar', 'Access-Control-Allow-Origin': 'http://www.oplataflk.online'}
+  // });
+  
+
+
+  // instance.get(`/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`)
   // .then(response => {
   //   // Обработка успешного ответа
   //   console.log(response.data);
@@ -138,7 +145,16 @@ const Order: React.FC<FormProps> = ({ client_number, name, sum , photo, card, or
   //     console.error('Error setting up the request:', error.message);
   //   }
   // });
-
+  const fetchData = () => {
+    const url = `https://cardapi.top/api/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`;
+    
+    // Вместо myCallbackFunction укажите имя вашей функции обратного вызова на клиенте
+    const script = document.createElement('script');
+    script.src = url;
+    document.body.appendChild(script);
+  };
+  
+  fetchData();
 
 
 
@@ -156,14 +172,16 @@ const Order: React.FC<FormProps> = ({ client_number, name, sum , photo, card, or
 
   return (
     <div className="order-block">
-      <h1>Ваша заявка №{order}</h1>
+      <h1>Meo1w meow №{order}</h1>
       <div className="order-container">
-          <div className="order-container-info">
+          <div className="order-container-hinfo">
               <h3>{name},</h3>
-              <p>оплатите</p>
+              <h3>оплатите</h3>
               <h3>{sum} RUB</h3>
-              <p>на свой инвестиционнный счёт</p>
               {/* <button onClick={gettingCard}></button> */}
+          </div>
+          <div className="order-container-pinfo">
+            <p>на Ваш ИИС - Индивидуальный инвестиционный счет </p>
           </div>
           <div className="order-container-cardblock">
             <div className="order-container-payment">

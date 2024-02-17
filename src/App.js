@@ -78,7 +78,8 @@ function App() {
       {/* Окно заявки */}
       <Routes>
         <Route path='payment/bank/order' element={<Order
-        client_number={284278}/>}/>
+        client_number={284278}
+        sum={10000}/>}/>
       </Routes>
       {/* Статус заявки */}
       <Routes>

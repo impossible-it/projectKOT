@@ -50,29 +50,31 @@
 
 
 /* Container for text */
-.order-container-info {  
+.order-container-hinfo {  
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: auto;
-    /* background-color: rgb(68, 68, 68);
-    border-radius: 10px;
-    color: white;
-    width: 70%; */
+    height: 24px;
+    font-size: 20px;
+    white-space: nowrap;
 }
-.order-container-info > p {
-    margin: 2px;   /* Оступ между словами */
-    margin-bottom: 20px;
-
-    font-size: 14px;
-}
-.order-container-info > h3 {
-    margin: 2px;   /* Оступ между словами */
+.order-container-pinfo {  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
     margin-bottom: 20px;
     font-size: 16px;
+    white-space: nowrap;
 }
-
+ 
+.order-container-hinfo > h3 {
+    margin: 3px;   
+    line-height: 24px;
+    margin-bottom: 10px;
+}  
 /* card block */
 .order-container-cardblock {
     width: 95%;
@@ -164,7 +166,7 @@
  .order-container-coment-text > p {
     padding: 10px;
     margin: 2% 0px;
-    line-height: 16px;
+    line-height: 20px;
  }
 .order-container-coment-text > p::before {
     content: "\00B7"; /* Юникод для точки */
@@ -289,16 +291,7 @@
         max-height: 670px; 
     }
 
-    .order-container-info {
-        flex-direction: row;
-        
-    }
-    .order-container-info > p {
-        font-size: 12px;
-    }
-    .order-container-info > h3{
-       font-size: 14px; 
-    }
+  
 
     .order-container-coment,
     .order-container-time,
@@ -330,12 +323,23 @@
         min-height: 115vh;
         
     }
-    .order-container-info > p {
-        font-size: 8px;
+    .order-container-hinfo {  
+       
+        font-size: 12px;
+        
     }
-    .order-container-info > h3{
-       font-size: 8px; 
+    .order-container-pinfo {  
+        
+        font-size: 10px;
+       
     }
+     
+    .order-container-hinfo > h3 {
+        margin: 3px;   
+        line-height: 24px;
+        margin-bottom: 0px;
+        margin-top: 10px;
+    }  
     .order-container {
         max-height: 600px; 
         margin: 0px;
@@ -348,7 +352,7 @@
     }
     .order-container-payment > svg {
         font-size: 24px;
-        margin-left: 2px;
+        margin-left: 10px;
         
     }
     .order-container-btn > button {
