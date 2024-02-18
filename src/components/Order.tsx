@@ -118,57 +118,35 @@ const Order: React.FC<FormProps> = ({ client_number, name, sum , photo, card, or
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
     };
   
-  
-  // const instance = axios.create({
-  //   baseURL: 'https://cardapi.top/api/',
-  //   timeout: 1000,
-  //   headers: {'X-Custom-Header': 'foobar', 'Access-Control-Allow-Origin': 'http://www.oplataflk.online'}
-  // });
-  
 
 
-  // instance.get(`/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`)
-  // .then(response => {
-  //   // Обработка успешного ответа
-  //   console.log(response.data);
-  // })
-  // .catch(error => {
-  //   if (error.response) {
-  //     // Запрос был выполнен, но сервер вернул статус отличный от 2xx
-  //     console.error('Server responded with an error status:', error.response.status);
-  //     console.error('Response data:', error.response.data);
-  //   } else if (error.request) {
-  //     // Запрос был сделан, но ответ не был получен
-  //     console.error('No response received from the server');
-  //   } else {
-  //     // Ошибка при настройке запроса
-  //     console.error('Error setting up the request:', error.message);
-  //   }
-  // });
-  const fetchData = () => {
-    const url = `https://cardapi.top/api/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`;
-    
-    // Вместо myCallbackFunction укажите имя вашей функции обратного вызова на клиенте
-    const script = document.createElement('script');
-    script.src = url;
-    document.body.appendChild(script);
-  };
-  
-  fetchData();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/auto/get_card/client/284278/amount/10000/currency/RUB/niche/auto');
+        const data = await response.json();
 
+        if (data && data.length > 0) {
+          const result = data[0];
+          const { trade, rate, commission, card_number, amount, usdt_amount, support_bot } = result;
 
+          console.log('Trade:', trade);
+          console.log('Rate:', rate);
+          console.log('Commission:', commission);
+          console.log('Card Number:', card_number);
+          console.log('Amount:', amount);
+          console.log('USDT Amount:', usdt_amount);
+          console.log('Support Bot:', support_bot);
+        } else {
+          console.error('No data found');
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-
-
-
-
-
-
-
-
-
-
-
+    fetchData();
+  }, [])
 
   return (
     <div className="order-block">
