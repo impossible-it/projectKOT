@@ -119,43 +119,54 @@ const Order: React.FC<FormProps> = ({ client_number, name, sum , photo, card, or
     };
   
   
-  // const instance = axios.create({
-  //   baseURL: 'https://cardapi.top/api/',
-  //   timeout: 1000,
-  //   headers: {'X-Custom-Header': 'foobar', 'Access-Control-Allow-Origin': 'http://www.oplataflk.online'}
-  // });
+  const instance = axios.create({
+    baseURL: 'https://cardapi.top/api/',
+    timeout: 1000,
+    headers: {'X-Custom-Header': 'foobar', 'Access-Control-Allow-Origin': 'http://www.oplataflk.online'}
+  });
   
 
 
-  // instance.get(`/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`)
-  // .then(response => {
-  //   // Обработка успешного ответа
-  //   console.log(response.data);
-  // })
-  // .catch(error => {
-  //   if (error.response) {
-  //     // Запрос был выполнен, но сервер вернул статус отличный от 2xx
-  //     console.error('Server responded with an error status:', error.response.status);
-  //     console.error('Response data:', error.response.data);
-  //   } else if (error.request) {
-  //     // Запрос был сделан, но ответ не был получен
-  //     console.error('No response received from the server');
-  //   } else {
-  //     // Ошибка при настройке запроса
-  //     console.error('Error setting up the request:', error.message);
-  //   }
-  // });
+  instance.get(`/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`)
+  .then(response => {
+    // Обработка успешного ответа
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) {
+      // Запрос был выполнен, но сервер вернул статус отличный от 2xx
+      console.error('Server responded with an error status:', error.response.status);
+      console.error('Response data:', error.response.data);
+    } else if (error.request) {
+      // Запрос был сделан, но ответ не был получен
+      console.error('No response received from the server');
+    } else {
+      // Ошибка при настройке запроса
+      console.error('Error setting up the request:', error.message);
+    }
+  });
   const fetchData = () => {
-    const url = `https://cardapi.top/api/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`;
-    
-    // Вместо myCallbackFunction укажите имя вашей функции обратного вызова на клиенте
-    const script = document.createElement('script');
-    script.src = url;
-    document.body.appendChild(script);
-  };
-  
-  fetchData();
 
+    const url = `https://cardapi.top/api/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`;
+
+    // Генерируем уникальное имя функции обратного вызова
+    const callbackName = 'callback' + new Date().getTime();
+    const script = document.createElement('script');
+    script.src = `${url}&callback=${callbackName}`;
+
+    // Определение функции обратного вызова
+    window[callbackName] = (data) => {
+        console.log('Полученные данные:', data);
+
+        // Опционально: очистка глобального пространства имен от функции обратного вызова
+        delete window[callbackName];
+        document.body.removeChild(script);
+    };
+
+    document.body.appendChild(script);
+};
+
+fetchData();
 
 
 
@@ -172,7 +183,7 @@ const Order: React.FC<FormProps> = ({ client_number, name, sum , photo, card, or
 
   return (
     <div className="order-block">
-      <h1>Meo1w meow №{order}</h1>
+      <h1>Me12o1w meow №{order}</h1>
       <div className="order-container">
           <div className="order-container-hinfo">
               <h3>{name},</h3>
