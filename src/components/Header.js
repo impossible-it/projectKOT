@@ -2,7 +2,7 @@
 import React from 'react';
 import { useState } from 'react';
 import '../components/header__style.css'
-import tinkoff from '../components/img/tinkoff.svg'
+import logo from '../components/img/logo.svg'
 import exit from '../components/img/exit.svg'
 
 
@@ -30,8 +30,8 @@ import exit from '../components/img/exit.svg'
     <div className="header">
       
       <div className="header__left" >
-          <img className="logo" src={tinkoff}/>
-          <h2>KOT Payment Service</h2>
+          <img className="logo" src={logo}/>
+          <h2>PAYLINK</h2>
       </div>
 
       

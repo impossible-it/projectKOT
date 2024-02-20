@@ -19,7 +19,8 @@ interface FormProps {
 
 const Order: React.FC<FormProps> = ({ order, order_status, order_info, photo, confirm_circle, confirm_mark, confirm_clock }) => {
   
-
+  const orderStorage = localStorage.getItem('Trade')
+  order = orderStorage && JSON.parse(orderStorage);
  
   const navigate = useNavigate();
  
@@ -27,37 +28,99 @@ const Order: React.FC<FormProps> = ({ order, order_status, order_info, photo, co
   const onOrderClick = () => {
     navigate('/');
   }
-  
+  useEffect(() => {
+    const fetchData = async () => {
+      
+      try {
+        const response = await fetch(`/api/check_trade/trade/${order}`, { 
+          method: 'GET', 
+          mode: 'cors',
+          headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }});
+        console.log(response);
+       
+        const data = await response.json();
+
+        if (data && data.length > 0) {
+          const obj = data[0];
+          const { result, message } = obj;
+
+          localStorage.setItem('Resultation', result);
+          localStorage.setItem('ResultMessage', message);
+          console.log(result);
+          console.log(message);
+          
+          
+        } else {
+          console.error('No data found');
+        }
+      } catch (error) {
+        
+        
+        console.error('Error fetching data:', error);
+      } 
+    };
+
+    fetchData();
+  }, [])
+
+  const [currentPage, setCurrentPage] = useState(window.location.pathname);
 
   useEffect(() => {
-    // Этот код будет выполнен при монтировании компонента и при каждом обновлении
-    const fetchDataAndRefresh = async() => {
-      switch(order_status){
-        case "Оплата успешна":
-          console.log("1");
-          setTimeout(() => {
-            window.location.href = '/'
-          }, 60000)                                   // Перебрасываем юзера на начальную страницу после успешной оплаты 
-          
+    const fetchDataAndRefresh = async () => {
+      const resultStorage = localStorage.getItem('Resultation');
+      const result = resultStorage;
+      const messageStorage = localStorage.getItem('ResultMessage');
+      const message = resultStorage;
+
+      switch (result) {
+        case "success":
+          console.log("Payment successful");
+          if (currentPage !== '/payment/bank/order-status-confirmed') {
+            window.location.href = '/payment/bank/order-status-confirmed';
+          }
           break;
-        case "Заявка обрабатывается":
-          console.log("12");
-          setTimeout(() => {
-            window.location.href = '/payment/bank/order-status-confirmed'
-          }, 15000)                                                                 // // Перебрасываем юзера если Статус ордера confirmed 
+        case "error":
+          if (message === 'trade archived') {
+            console.log("Trade archived, redirecting to unsuccessful payment page");
+            if (currentPage !== '/payment/bank/order-status-failed') {
+              window.location.href = '/payment/bank/order-status-failed';
+            }
+          } else {
+            console.log("Payment failed, refreshing page in 30 seconds");
+            setTimeout(() => {
+              if (currentPage === window.location.pathname) {
+                window.location.reload();
+              }
+            }, 30000);
+          }
           break;
-        case "Оплата не прошла":
-          console.log("13");
-          setTimeout(() => {
-            window.location.href = '/'
-          }, 60000)                                     // Перебрасываем юзера на начальную страницу после неуспешной оплаты 
+        default:
+          console.log("Unknown result");
           break;
       }
-    }
+    };
+
     const intervalId = setInterval(fetchDataAndRefresh, 15000);
+
     return () => {
-      // при выходе срабатывает код ниже//
-      
+      // Очищаем интервал при размонтировании компонента
+      clearInterval(intervalId);
+    };
+  }, [currentPage]);
+
+  useEffect(() => {
+    // Обновляем текущую страницу при изменении URL
+    const handleLocationChange = () => {
+      setCurrentPage(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
     };
   }, []);
    

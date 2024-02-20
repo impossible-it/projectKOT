@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/Header.js';
+import Footer from './components/Footer.js';
 import Form from './components/Form.tsx'
 import Home from './components/Home.tsx'
 import Order from './components/Order.tsx'
@@ -18,8 +18,6 @@ import raif from './components/img/raif.svg'
 
 
 
-
-localStorage.setItem('remainingTime', "1200");           // Обнуляем таймер в Ордере 
 
 
 function App() {

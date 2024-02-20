@@ -5,6 +5,7 @@ import stripe from '../components/img/Stripe.png'
 import visa from '../components/img/visa.svg'
 import master from '../components/img/master.svg'
 import mir from '../components/img/mir.svg' 
+import logo from '../components/img/logo.svg'
 
 
 const EndlPage = () => {
@@ -13,8 +14,8 @@ const EndlPage = () => {
                
             <div className="footer">
                 <div className="row-v-center">
-                <a href="https://coursados.com/" class="custom-logo-link" rel="home" aria-current="page"><img width="160" height="50" src="https://static.vecteezy.com/system/resources/previews/020/329/376/non_2x/cat-head-kitten-symbol-gaming-cat-logo-elegant-element-for-brand-abstract-icon-symbols-vector.jpg" className="custom-logo" alt="Coursados" decoding="async" title="Homepage"/></a>
-                <h2>KOT Payment Service</h2>
+                <a href="https://coursados.com/" class="custom-logo-link" rel="home" aria-current="page"><img src={logo} className="custom-logo" alt="Coursados" decoding="async" title="Homepage"/></a>
+                <h2>PAYLINK</h2>
                    <div className="footer__menu">
                         <ul id="menu-bottom" className="footer-menu">
                           <li id="" className=""><a href="https://coursados.com/terms-and-conditions/">Условия</a></li>

@@ -4,11 +4,8 @@ module.exports = function (app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'https://cardapi.top',
+      target: 'http://cardapi.top/api',  // Замените на адрес вашего сервера разработки
       changeOrigin: true,
-      pathRewrite: {
-        '^/api': '/api',
-      },
     })
   );
 };

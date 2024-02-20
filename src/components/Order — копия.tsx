@@ -7,7 +7,7 @@ import { IoCardOutline } from "react-icons/io5";
 import { RiMastercardFill } from "react-icons/ri";
 import { RiVisaFill } from "react-icons/ri";
 import axios from 'axios'           
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
@@ -83,79 +83,44 @@ const Order: React.FC<FormProps> = ({ client_number, name, sum, order_sum , phot
     // Удалите временный элемент textarea из документа
     document.body.removeChild(tempTextarea);
 }
-const [remainingTime, setRemainingTime] = useState<number>(() => {
-  const storedRemainingTime = parseInt(localStorage.getItem('remainingTime') || '', 10);
-  return isNaN(storedRemainingTime) ? 20 * 60 : storedRemainingTime;
-});
-
-useEffect(() => {
+  
+  const initialTimeInSeconds = 20 * 60; // Время в секундах (20 минут)
+  const [remainingTime, setRemainingTime] = useState<number>(
+  parseInt(localStorage.getItem('remainingTime') || '', 10) || initialTimeInSeconds // Секунды с БД 
+    ); 
+  
+  useEffect(() => {
   const timerInterval = setInterval(() => {
     setRemainingTime(prevTime => {
-      const newTime = prevTime - 1;
-      localStorage.setItem('remainingTime', newTime.toString());
-      return newTime;
+    const newTime = prevTime - 1; // Таймер 
+    localStorage.setItem('remainingTime', newTime.toString()); // В локалХранилище перекидывает текущее время 
+    
+    return newTime;
     });
-  }, 1000);
-
-  return () => {
-    clearInterval(timerInterval);
-  };
-}, []);
-
-useEffect(() => {
-  if (remainingTime < 0) {
-    setRemainingTime(0);
-    localStorage.setItem('remainingTime', '1200');
-    window.location.href = '/payment/bank/order-status';
-  }
-}, [remainingTime]);
-
-const formatTime = (seconds: number) => {
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
-  return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-};
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (localStorage.getItem('Trade') == null) {
-        try {
-          const response = await fetch(`/api/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-            },
-          });
-          console.log(response);
-
-          const data = await response.json();
-
-          if (data && data.length > 0) {
-            const result = data[0];
-            const { trade, rate, commission, card_number, amount, usdt_amount, support_bot } = result;
-
-            localStorage.setItem('Trade', trade);
-            localStorage.setItem('Rate', rate);
-            localStorage.setItem('Commission', commission);
-            localStorage.setItem('Card', card_number);
-            localStorage.setItem('Amount', amount);
-            localStorage.setItem('USDT', usdt_amount);
-            localStorage.setItem('Support:', support_bot);
-          } else {
-            console.error('No data found');
-          }
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      } else {
-        console.log('если обновили страницу а данные уже есть');
-      }
+    
+   }, 1000); // Каждую секунду
+    return () => {
+      clearInterval(timerInterval);                     
     };
+  }, []);
+  
+  useEffect(() => {
+    // Обнуляем таймер и перенаправляем на другую страницу при достижении времени
+    if (remainingTime < 0) {
+      
+      setRemainingTime(0);
+      localStorage.setItem('remainingTime', '12000');
+      window.location.href = '/payment/bank/order-status';
+    }
+  }, [remainingTime]);
 
-    fetchData();
-  }, [])
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    };
+  
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -163,7 +128,7 @@ const formatTime = (seconds: number) => {
       try {
         const response = await fetch(`/api/auto/get_card/client/284278/amount/${sum}/currency/RUB/niche/auto`, { 
           method: 'GET', 
-          mode: 'no-cors',
+          mode: 'cors',
           headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
