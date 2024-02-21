@@ -16,6 +16,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  background: url(../components/img/wall.png) center center fixed;
+  background-size: 100% 100%;
+  
+
+  height: auto;
 }
 .main > h1 {
   color: white; 
@@ -44,7 +49,7 @@
     align-items: center;
     height: auto;
     width: 70vw;
-    background-color: black;
+    
     margin-bottom: 20px;
   }
   
@@ -63,7 +68,7 @@
   
   .main_company_content {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     height: 65%;
@@ -75,7 +80,7 @@
     height: 90px;
     border-radius: 30;
     background-color: white;
-    margin: 10px 20px;
+    padding: 20px 0px;
     
   }
   
@@ -138,6 +143,7 @@
     border-radius: 50%;
     bottom: 5px;
     left: -80px;
+    filter: blur(1.5px);
   }
   .circle-container_first::before {
     width: 120px; /* Размер первого (большего) круга */
@@ -165,6 +171,7 @@
   border-radius: 50%;
   bottom: 5px;
   left: -80px;
+  filter: blur(1.5px);
 }
 .circle-container_second::before {
   width: 120px; /* Размер первого (большего) круга */
@@ -192,6 +199,7 @@
   border-radius: 50%;
   bottom: 5px;
   left: -80px;
+  filter: blur(1.5px);
 }
 .circle-container_third::before {
   width: 120px; /* Размер первого (большего) круга */
@@ -219,6 +227,8 @@
   border-radius: 50%;
   bottom: 5px;
   left: -80px;
+  filter: blur(1.5px);
+
 }
 .circle-container_fourth::before {
   width: 120px; /* Размер первого (большего) круга */
@@ -242,6 +252,13 @@
 /* ---------------------------------------------------------  */
 
 @media only screen and (max-width: 868px) {
+  .main {
+    background: url(../components/img/wall.png) center center;
+    background-size: 200% 100%;
+    background-repeat: repeat-y;
+    background-position-x: 0px;
+    background-position-y: 0px;
+  }
   .mainpage {
       width: 80%; /* Изменяем ширину на весь экран */
 
@@ -328,11 +345,12 @@
       font-size: 20px; /* Изменяем размер текста */
   }
   .main_company_content > img {
-    font-size: 20px; /* Изменяем размер текста */
+    width: 70px;
+    height: 70px;
 }
 
   .main_company_button {
-      min-height: 0px;
+      min-height: 100px;
   }
 
   /* Стили для кругов */

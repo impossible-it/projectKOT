@@ -136,8 +136,8 @@ const MyForm: React.FC<FormProps> = ({ data, photo, background }) => {
           <div className="checkbox-container">
             <input type="checkbox" id="agreement" required />
             <label htmlFor="agreement">
-              <p>Пользовательское соглашение и политика конфиденциальности. <br />
-              Условия пользовательского соглашения.</p>
+              <a href='#'>Пользовательское соглашение и политика конфиденциальности. <br />
+              Условия пользовательского соглашения.</a>
             </label>
           </div>
           <button type='button' className="clear-button" onClick = { () => {reset({ phone: '' , name: '', summ:''}); clearErrors()}}>Очистить</button>      

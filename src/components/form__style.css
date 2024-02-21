@@ -6,6 +6,9 @@
     width: 100%;
     background-color: black;
     padding-top: 65px;
+    background: url(../components/img/wall.png) center center;
+    background-size: 100% 100%;
+    background-repeat: repeat-y;
 }
 
 .block > h1 {
@@ -111,7 +114,7 @@
     box-shadow: 0px 0px 3px .1px black;
 
 }
-.checkbox-container > label > p {
+.checkbox-container > label > a {
     margin-left: 20px;
 }
 
@@ -177,6 +180,14 @@
 
 
 
+@media only screen and (max-width: 1440px) {
+    .block {
+        background: url(../components/img/wall.png) center center;
+        background-size: 100% 100%;
+        background-repeat: repeat-y;
+        
+    }
+}
 
 
 
@@ -186,6 +197,11 @@
     .block {
         height: 120vh;
         padding-top: 50px;
+        background: url(../components/img/wall.png) center center;
+        background-size: 200% 100%;
+        background-repeat: repeat-y;
+        background-position-x: 0px;
+        background-position-y: 0px;
     }
 
     .block > h1 {
@@ -199,12 +215,12 @@
     }
 
     .form-input {
-        padding: 15px;
+        padding: 10px;
         margin: 10px 0;
     }
 
     .form-container-logo {
-        
+        flex-direction: column;
         justify-content: center;
     }
 
@@ -224,7 +240,7 @@
         justify-content: center;
     
     }
-    .checkbox-container > label > p {
+    .checkbox-container > label > a {
         line-height: 14px;
         font-size: 12px;
     }
@@ -248,7 +264,7 @@
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
     .block {
-        height: 150vh;
+        height: 70vh;
         padding-top: 50px;
     }
     .checkbox-container {
