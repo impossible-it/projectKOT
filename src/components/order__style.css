@@ -384,3 +384,16 @@
         height: 80vh;        
     }
 }
+
+.token_button {
+    display: flex;
+    flex-direction: row;
+    margin: 50px;
+    width: 100%;
+}
+.token_button > button {
+    background-color: rgb(148, 64, 67);
+    margin: 20px;
+    padding: 20px;
+    color: white;
+}

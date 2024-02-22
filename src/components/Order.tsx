@@ -42,7 +42,7 @@ const Order: React.FC<FormProps> = ({ client_number, name, sum, order_sum , phot
 
 
   const handleButtonHelp = () => {
-    navigate('/payment/bank/order-status/help');
+    localStorage.removeItem('Trade');
   } 
 
   const storedData = localStorage.getItem('userdata');
@@ -122,7 +122,6 @@ const formatTime = (seconds: number) => {
         try {
           const response = await fetch(`/api/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`, {
             method: 'GET',
-            mode: 'cors',
             headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
@@ -193,12 +192,12 @@ const formatTime = (seconds: number) => {
       } } else { console.log('если обновили страницу а данные уже есть')}
     };
 
-    fetchData();
+    // fetchData();
   }, [])
 
   return (
     <div className="order-block">
-      <h1>Заявка №2{order}</h1>
+      <h1>Заявка №{order}</h1>
       <div className="order-container">
           <div className="order-container-hinfo">
               <h3>{name},</h3>

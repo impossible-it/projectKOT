@@ -6,7 +6,7 @@ import Footer from './components/Footer.js';
 import Form from './components/Form.tsx'
 import Home from './components/Home.tsx'
 import Order from './components/Order.tsx'
-
+import Token from './components/Token.js'
 import Status from './components/Status.tsx'
 import tinkoff from './components/img/tinkoff.svg'
 import sber from './components/img/sber.svg'
@@ -17,7 +17,10 @@ import other from './components/img/other.svg'
 import raif from './components/img/raif.svg'
 
 
-
+if (window.location.pathname === '/') {
+  // Обнуляем localStorage
+  localStorage.clear();
+}
 
 
 function App() {
@@ -108,6 +111,9 @@ function App() {
           confirm_clock={true}/>}/>
       </Routes>
       <Footer/>
+      <Routes>
+        <Route path='/token' element={<Token/>}/>
+      </Routes>
     </Router>
   );
 }

@@ -18,11 +18,11 @@ const EndlPage = () => {
                 <h2>PAYLINK</h2>
                    <div className="footer__menu">
                         <ul id="menu-bottom" className="footer-menu">
-                          <li id="" className=""><a href="https://coursados.com/terms-and-conditions/">Условия</a></li>
-                          <li id="" className=""><a rel="privacy-policy" href="https://coursados.com/privacy-policy/">Политика безопасности</a></li>
-                          <li id="" className=""><a href="https://coursados.com/refund-policy/">Политика возврата</a></li>
+                          <li id="" className=""><a href="#">Условия</a></li>
+                          <li id="" className=""><a rel="privacy-policy" href="#">Политика безопасности</a></li>
+                          <li id="" className=""><a href="#">Политика возврата</a></li>
                          
-                          <li id="" className=""><a href="https://coursados.com/faq/">Частозадаваемые вопросы</a></li>
+                          <li id="" className=""><a href="#">Частозадаваемые вопросы</a></li>
                             <div class="payment-method2">
                                 <img src={master} alt="MasterCard/"/>
                             </div>
@@ -38,9 +38,9 @@ const EndlPage = () => {
             </div>
        
             <div className="social">
-                    <a href="https://www.linkedin.com/company/coursados/" ><img src="https://coursados.com/wp-content/themes/learn4/img/linkedin.png" alt="linkedin"/></a>
-                    <a href="https://www.instagram.com/coursados_online_academy/" ><img src="https://coursados.com/wp-content/themes/learn4/img/inst.png" alt="instagram"/></a>
-                    <a href="https://www.facebook.com/coursados" target="_blank"><img src="https://coursados.com/wp-content/themes/learn4/img/facebook.png" alt="facebook"/></a>
+                    <a href="#" ><img src="https://coursados.com/wp-content/themes/learn4/img/linkedin.png" alt="linkedin"/></a>
+                    <a href="#" ><img src="https://coursados.com/wp-content/themes/learn4/img/inst.png" alt="instagram"/></a>
+                    <a href="#" target="_blank"><img src="https://coursados.com/wp-content/themes/learn4/img/facebook.png" alt="facebook"/></a>
             </div>
 
     

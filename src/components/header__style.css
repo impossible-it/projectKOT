@@ -415,11 +415,11 @@
     }
     /* FOOTER*********************************** */
     .custom-logo {
-        width: 20px;
-        height: 20px;
+        width: 35px;
+        height: 35px;
     }
     .row-v-center > h2 {
-        font-size: 12px;
+        font-size: 16px;
     }
     .footer__menu > ul > li {
         margin: 0px 10px;
@@ -435,7 +435,7 @@
         align-items: center
     }
     .payment-method2 {
-        width: 30px;
+        width: 40px;
         height: 22px;
     }
     .payment-method2 > img {
