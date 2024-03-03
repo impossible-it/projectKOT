@@ -81,19 +81,20 @@ const EndlPage = () => {
                 <li class="nav-item active"><a class="nav-link" href="#!">Главная</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">Сервис</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">Информация</a></li>
-                
-                
-            </ul>
-        </div>
-        <div class="payment-method2">
+                <div className='nav-pay'>
+                <div className="payment-method2">
                                 <img src={master} alt="MasterCard/"/>
                             </div>
-                            <div class="payment-method2">
+                            <div className="payment-method2">
                                 <img src={mir} alt="Mir"/>
                             </div>
                             <div class="payment-method2">
                                  <img src={visa} alt="Visa"/>
                              </div>
+                             </div>
+            </ul>
+        </div>
+        
     </div>
     <div className="row">
              <div className="col-12 footer-bottom">

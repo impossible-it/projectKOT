@@ -56,7 +56,7 @@ const LoadingOverlay = () => {
     order: number;
     order_sum: number;
     photo: string;
-    card: "44444444";
+    card: number;
     client_number: 284278;
   }
 const HomePage:React.FC<FormProps> = ({ client_number, name, sum, order_sum , photo, card, order }) => {
@@ -82,7 +82,7 @@ const HomePage:React.FC<FormProps> = ({ client_number, name, sum, order_sum , ph
   const buttonStatusNavigate = () => { navigate('/auth-usr/bank/order/status')}
 
   const handleButtonCard = () => {
-    const cardStorage = localStorage.getItem('remainingTime'); // Переменная которую передаешь для копирования name
+    const cardStorage = localStorage.getItem('Card'); // Переменная которую передаешь для копирования name
     const card = cardStorage && JSON.parse(cardStorage);
     var orderNumber = card;
     var textToCopy = orderNumber.toString(); // Преобразуйте число в строку
@@ -118,7 +118,7 @@ const handleButtonOrder = () => {
     document.body.removeChild(tempTextarea);// Удалите временный элемент textarea из документа
 }
 const handleButtonCount = () => {
-    const cardStorage = localStorage.getItem('USDT'); // Переменная которую передаешь для копирования name
+    const cardStorage = localStorage.getItem('Amount'); // Переменная которую передаешь для копирования name
     const card = cardStorage && JSON.parse(cardStorage);
     var orderNumber = card;
     var textToCopy = orderNumber.toString(); // Преобразуйте число в строку
@@ -186,7 +186,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
     const fetchData = async () => {
       if (localStorage.getItem('Trade') == null) {
         try {
-          const response = await fetch(`/api/auto/get_card/client/${client_number}/amount/${sum}/currency/RUB/niche/auto`, {
+          const response = await fetch(`/api/auto/get_card/client/284278/amount/${sum}/currency/RUB/niche/auto`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -259,7 +259,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                         </div>
                         <div className="depth-frame-4">
                         <div className="depth-frame-3">
-                        <div className="text-wrapper-2">{card}444444444444                     
+                        <div className="text-wrapper-2">{card}                     
                         <LuCopyPlus onClick={handleButtonCard} />
                         </div>
                         </div>

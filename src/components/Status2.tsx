@@ -44,10 +44,10 @@ const AlertCopy = ({ message}) => {
         <div className="p-3 mb-3 text-dark">{message}</div>
     );
     }
-    const orderStorage = localStorage.getItem('Trade')
-    const order = orderStorage && JSON.parse(orderStorage);
-    const StatusPage:React.FC<FormProps> = ({ order }) => {
     
+    const StatusPage:React.FC<FormProps> = ({ order }) => {
+    const orderStorage = localStorage.getItem('Trade')
+    order = orderStorage && JSON.parse(orderStorage);
     useEffect(() => {
         const fetchData = async () => {
           try {
@@ -70,17 +70,24 @@ const AlertCopy = ({ message}) => {
               localStorage.setItem('ResultMessage', message);
               console.log(result);
               console.log(message);   
-              if (result == 'success') {
+              switch (result) {
+                case 'error': 
+                setInterval( () => setLoadingProp(77), 2000)
+                setInterval( () => window.location.reload(), 10000)
+                break;
+                case 'success': 
                 setInterval( () => setLoadingProp(100), 2000)
+                setInterval( () => window.location.reload(), 10000)
+                break;
+                default: 
+                break;
               }           
-            } else {
-              console.error('No data found');
-            }
+            } 
           } catch (error) {
             console.error('Error fetching data:', error);
             setInterval( () => setLoadingProp(0), 2000)
             
-            setInterval( () => window.location.reload(), 5000)
+            setInterval( () => window.location.reload(), 20000)
           } 
         }; fetchData();
       }, [])

@@ -211,7 +211,8 @@
 .footer-disclaimer {
     font-size: 12px;
     line-height: 150%;
-    margin-top: 5px;
+    margin: 0 auto;
+    padding: 20px;
 }
 .footer-bottom > p {
     opacity: 0.4;
@@ -221,7 +222,10 @@
 
 
 
-
+.nav-pay {
+    display: flex;
+    justify-content: center;
+}
 
 
 

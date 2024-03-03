@@ -429,10 +429,12 @@ flex-direction: column;
     }
 
     .form-page .text-wrapper {
-        font-size: 18px; /* Adjust font size for smaller screens */
+        font-size: 20px; /* Adjust font size for smaller screens */
         margin-top: 5px; /* Adjust margin-top for smaller screens */
     }
-
+    .form-page .text-wrapper-2 {
+        font-size: 14px;
+    }
     .form-page .depth-frame-12 {
         width: 100%; /* Adjust width for smaller screens */
     }

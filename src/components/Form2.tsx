@@ -88,7 +88,14 @@ const Startform = () => {
                   <div className="depth-frame-6">
                     <div className="depth-frame-7">
                       <p className="text-wrapper-98">
-                        Заполните короткую форму и приступите к оплате
+                        Заполните Ваши персональные
+                      </p>
+                    </div>
+                  </div>
+                  <div className="depth-frame-6">
+                    <div className="depth-frame-7">
+                      <p className="text-wrapper-98">
+                         данные и обьем вложений
                       </p>
                     </div>
                   </div>
