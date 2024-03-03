@@ -10,7 +10,20 @@ import { SquareLoader } from 'react-spinners';
 interface FormProps {
     order: number;
   }
-function MyTimer({ expiryTimestamp }) {
+  function MyTimer() {
+    
+    const [expiryTimestamp, setExpiryTimestamp] = useState(() => {
+      // Получаем сохраненное время из локального хранилища при первой загрузке
+      const storedTime = localStorage.getItem('expiryTimestamp');
+      return storedTime ? parseInt(storedTime, 10) : new Date().getTime() + 30 * 60000; // Устанавливаем 30 минут, если нет сохраненного значения
+    });// Например, устанавливаем время на 10 секунд
+  
+    // Получаем сохраненное время из локального хранилища при первой загрузке
+    const getSavedExpiryTimestamp = () => {
+      const storedTime = localStorage.getItem('expiryTimestamp');
+      return storedTime ? parseInt(storedTime, 10) : expiryTimestamp;
+    };
+    // Используем useTimer с начальным временем
     const {
       totalSeconds,
       seconds,
@@ -22,16 +35,19 @@ function MyTimer({ expiryTimestamp }) {
       pause,
       resume,
       restart,
-    } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
+    } = useTimer({ expiryTimestamp: getSavedExpiryTimestamp(), onExpire: () => console.warn('onExpire called') });
   
+    // Сохраняем время в локальное хранилище при каждом обновлении
+    useEffect(() => {
+      localStorage.setItem('expiryTimestamp', expiryTimestamp.toString());
+    }, [expiryTimestamp]);
     return (
       <div style={{ textAlign: 'center' }}>
-        <h1></h1>
-        <p>.</p>
+        
         <div style={{ fontSize: '100px' }}>
           <span>{minutes}</span>:<span>{seconds}</span>
         </div>
-        <p>Идёт процесс...</p>
+        <p>Идёт процесс обработки...</p>
         <div className='p-5'>
         <span className="loader"></span>
         </div>
@@ -46,12 +62,11 @@ const AlertCopy = ({ message}) => {
     }
     
     const StatusPage:React.FC<FormProps> = ({ order }) => {
-    const orderStorage = localStorage.getItem('Trade')
-    order = orderStorage && JSON.parse(orderStorage);
+      const orderStorage = localStorage.getItem('Trade')
+      order = orderStorage && JSON.parse(orderStorage);
     useEffect(() => {
         const fetchData = async () => {
           try {
-            
             setLoadingProp(65)
             const response = await fetch(`/api/check_trade/trade/${order}`, { 
               method: 'GET', 
@@ -70,23 +85,26 @@ const AlertCopy = ({ message}) => {
               localStorage.setItem('ResultMessage', message);
               console.log(result);
               console.log(message);   
-              switch (result) {
-                case 'error': 
+              switch (message) {
+                case 'still processing': 
                 setInterval( () => setLoadingProp(77), 2000)
-                setInterval( () => window.location.reload(), 10000)
+                setInterval( () => window.location.reload(), 20000)
                 break;
-                case 'success': 
+                case 'fuly paid': 
                 setInterval( () => setLoadingProp(100), 2000)
-                setInterval( () => window.location.reload(), 10000)
+                
                 break;
-                default: 
+                case 'trade archived': 
+                setInterval( () => setLoadingProp(0), 2000)
+                setInterval( () => window.location.reload(), 60000)
+                default:
+               
                 break;
               }           
             } 
           } catch (error) {
             console.error('Error fetching data:', error);
             setInterval( () => setLoadingProp(0), 2000)
-            
             setInterval( () => window.location.reload(), 20000)
           } 
         }; fetchData();
@@ -94,6 +112,7 @@ const AlertCopy = ({ message}) => {
     const [showOrder, setShowOrder] = useState(false);
     const [loadingProp, setLoadingProp] = useState(0);
     const result = localStorage.getItem('Resultation')
+    const message = localStorage.getItem('ResultMessage')
     
     const handleButtonOrder = () => {
         const cardStorage = localStorage.getItem('Trade'); // Переменная которую передаешь для копирования name
@@ -142,14 +161,14 @@ const AlertCopy = ({ message}) => {
             
             <div className='status-photo'>
             
-            {result === 'failure' && (
+            {message === 'still processing' && (
         <div>
           {/* Блок 1 */}
           <MyTimer expiryTimestamp={time} />
         </div>
       )}
 
-      {result === 'error' && (
+      {message === 'trade archived' && (
         <div>
           {/* Блок 3 */}
           <section className="c-container">
@@ -163,7 +182,7 @@ const AlertCopy = ({ message}) => {
         </div>
       )}
 
-      {(result === 'success') && (
+      {(message === 'fuly paid') && (
         <div>
           {/* Блок 2 */}
           <section className="c-container">
@@ -180,26 +199,26 @@ const AlertCopy = ({ message}) => {
             <div className="depth-frame-2">
                 <div className="depth-frame-3">
                     <div className="text-wrapper"> 
-                    {result === 'success' && (
-                        <p>Ожидайте зачисления платежа от 3 до 15 минут</p>
-                    )}{result === 'failure' && (
-                        <p>Средства зачисляються на ваш счёт</p>
+                    {message === 'fuly paid' && (
+                        <p>Ожидайте зачисления платежа</p>
+                    )}{message === 'still processing' && (
+                        <p>Это занимает от 3 до 15 минут</p>
 
-                    )}{result === 'error' && (
-                        <p>Что-то пошло не так!</p>
+                    )}{message === 'trade archived' && (
+                        <p>Обратитесь в службу поддержки</p>
                     )}
                     </div>
                 </div>
             </div>
             <div className="depth-frame-2">
                 <div className="depth-frame-3">
-                    <div className="text-wrapper">{result === 'success' && (
-                        <p>Платеж обратывается системой</p>
-                    )}      {result === 'failure' && (
-                        <p>Проверьте зачисление</p>
+                    <div className="text-wrapper">{message === 'fuly paid' && (
+                        <p>и приступайте к торговле!</p>
+                    )}      {message === 'still processing' && (
+                        <p>Сохраните чек и ожидайте</p>
                     )}
-                    {result === 'error' && (
-                        <p>Обратитесь в службу поддержки или повторите попытку позже</p>
+                    {message === 'trade archived' && (
+                        <p>или повторите попытку позже</p>
                     )}
                         </div>
                 </div>
