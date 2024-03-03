@@ -3,11 +3,10 @@ import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
-import Form from './components/Form.tsx'
-import Home from './components/Home.tsx'
-import Order from './components/Order.tsx'
-import Token from './components/Token.js'
-import Status from './components/Status.tsx'
+import Form2 from './components/Form2.tsx'
+import Order2 from './components/Order2.tsx'
+import Bank2 from './components/Bank2.js'
+import Status2 from './components/Status2.tsx'
 import tinkoff from './components/img/tinkoff.svg'
 import sber from './components/img/sber.svg'
 import gaz from './components/img/gaz.svg'
@@ -15,7 +14,8 @@ import gaz2 from './components/img/gaz2.svg'
 import flk from './components/img/flk.svg'
 import other from './components/img/other.svg'
 import raif from './components/img/raif.svg'
-
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
 
 if (window.location.pathname === '/') {
   // Обнуляем localStorage
@@ -29,21 +29,21 @@ function App() {
       {/* Header */}
       <Header/> 
       {/* Выбор проекта */}
+      
       <Routes>
-        <Route path="/" element= {<Home data_first='Сбербанк Инвестиции' 
-          data_second='Тинькофф Инвестиции'
-          data_third = 'Газпром Инвестиции'
-          data_fourth =  'Binance Инвестиции'
-          photo_first = {sber}
-          photo_second =  {tinkoff}
-          photo_third =  {gaz}
-          photo_fourth = {flk}
-          link={true}
-          text_start='Выберите проект' 
-        />}/>
+        <Route path='/auth-usr' element= {<Form2/>}></Route>
+      </Routes>
+      <Routes>
+        <Route path='/auth-usr/bank/' element= {<Bank2/>}></Route>
+      </Routes>
+      <Routes>
+        <Route path='/auth-usr/bank/order' element= {<Order2/>}></Route>
+      </Routes>
+      <Routes>
+        <Route path='/auth-usr/bank/order/status' element= {<Status2/>}></Route>
       </Routes>
       {/* Форма */}
-      <Routes>
+      {/* <Routes>
         <Route path="/payment-sberbank" element= {<Form data='Сбербанк' photo={sber} background='background-color: grey;'/>}/>
       </Routes>
       <Routes>
@@ -60,9 +60,9 @@ function App() {
         data='Binance' 
         photo={flk}
         background='background-color: white;'/>}/>
-      </Routes>
+      </Routes> */}
       {/* Выбор банков */}
-      <Routes>
+      {/* <Routes>
         <Route path='/payment/bank' element={<Home data_first='Cбербанк'
           data_second='Тинькофф'
           data_third = 'Райффайзен'
@@ -75,15 +75,15 @@ function App() {
           link={false}
           text_style= {{fontWeight:'bold', fontFamily:  'Open Sans', fontSize: '24px',}}
       />}/>
-      </Routes>
+      </Routes> */}
       {/* Окно заявки */}
-      <Routes>
+      {/* <Routes>
         <Route path='payment/bank/order' element={<Order
         client_number={284278}
         sum={10000}/>}/>
-      </Routes>
+      </Routes> */}
       {/* Статус заявки */}
-      <Routes>
+      {/* <Routes>
         <Route path='payment/bank/order-status' element={<Status
           order= '60895'
           order_info= 'Ожидайте подтверждения это занимает порядка 5-10 минут.'
@@ -109,11 +109,11 @@ function App() {
           confirm_circle= 'confirm-logo-red'
           confirm_mark= 'confirm-logo-mark-red'
           confirm_clock={true}/>}/>
-      </Routes>
+      </Routes> */}
       <Footer/>
-      <Routes>
+      {/* <Routes>
         <Route path='/token' element={<Token/>}/>
-      </Routes>
+      </Routes> */}
     </Router>
   );
 }

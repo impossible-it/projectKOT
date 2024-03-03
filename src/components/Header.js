@@ -24,39 +24,38 @@ import exit from '../components/img/exit.svg'
 
   const clickToHome = () => { 
     console.log(123);
-    window.location.href = '/';
+    window.location.href = '/auth-usr';
   }
   return (
-    <div className="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-4 px-lg-5">
+                <img src={logo}></img>
+                <a class="navbar-brand" href="#!">PAYFLK</a>
+                <button class="navbar-toggler collapsed" onClick={toggleMenu} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="/auth-usr">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Информация</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Сервис</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">Мерчентилиз сервис</a></li>
+                                {/* <li><hr class="dropdown-divider" /></li> */}
+                                <li><a class="dropdown-item" href="#!">Экваринг сервис</a></li>
+                                <li><a class="dropdown-item" href="#!">Наличные под заказ</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-light" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Торговать
       
-      <div className="header__left" >
-          <img className="logo" src={logo}/>
-          <h2>PAYLINK</h2>
-      </div>
-
-      
-      <div className="header__center">
-          <ul className={`header__lists ${menuOpen ? 'show' : ''}`}>
-            <li><a href='/'>Главная</a></li>
-            <li><a href='#'>Сервис</a></li>
-            <li><a href='#'>Информация</a></li>
-            <div className='header__centerMenu'>
-              <button className="arrow">Проекты</button>
-             <div className='dropDown__header'>
-              <a href="#">Сбербанк</a>
-              <a href="#">Тинькофф</a>
-              <a href="#">Газпром</a>
-              </div>
+                        </button>
+                    </form>
+                </div>
             </div>
-          </ul>
-      </div>
-      <div className="header__right">
-        <a onClick={redirectToWebsite}><img src={exit}></img></a>
-        <div class="menu-btn" onClick={toggleMenu}>☰ Menu</div>
-      </div>
-      
-
-    </div>
+        </nav>
     
   );
 };
