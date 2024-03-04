@@ -17,7 +17,7 @@ import raif from './components/img/raif.svg'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
 
-if (window.location.pathname === '/') {
+if (window.location.pathname === '/auth-usr') {
   // Обнуляем localStorage
   localStorage.clear();
 }

@@ -48,7 +48,7 @@ interface FormProps {
           <span>{minutes}</span>:<span>{seconds}</span>
         </div>
         <p>Идёт процесс обработки...</p>
-        <div className='p-5'>
+        <div className="loader-contain">
         <span className="loader"></span>
         </div>
         </div>
@@ -75,6 +75,7 @@ const AlertCopy = ({ message}) => {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
             }});
+	    const check = 0;
             console.log(response);
             const data = await response.json();
     
@@ -90,9 +91,12 @@ const AlertCopy = ({ message}) => {
                 setInterval( () => setLoadingProp(77), 2000)
                 setInterval( () => window.location.reload(), 20000)
                 break;
-                case 'fuly paid': 
+                case 'fully paid': 
                 setInterval( () => setLoadingProp(100), 2000)
-                
+                if (check<=0) {
+		setInterval( () => window.location.reload(), 20000)
+		check = 1;
+}
                 break;
                 case 'trade archived': 
                 setInterval( () => setLoadingProp(0), 2000)
@@ -153,7 +157,7 @@ const AlertCopy = ({ message}) => {
                         </div>
                         <div className="depth-frame-4">
                             <div className="depth-frame-3">
-                                <div className="text-wrapper-2"><LuCopyPlus onClick={handleButtonOrder}/>
+                                <div className="text-wrapper-2">{order}<LuCopyPlus onClick={handleButtonOrder}/>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +186,7 @@ const AlertCopy = ({ message}) => {
         </div>
       )}
 
-      {(message === 'fuly paid') && (
+      {(message === 'fully paid') && (
         <div>
           {/* Блок 2 */}
           <section className="c-container">
@@ -199,7 +203,7 @@ const AlertCopy = ({ message}) => {
             <div className="depth-frame-2">
                 <div className="depth-frame-3">
                     <div className="text-wrapper"> 
-                    {message === 'fuly paid' && (
+                    {message === 'fully paid' && (
                         <p>Ожидайте зачисления платежа</p>
                     )}{message === 'still processing' && (
                         <p>Это занимает от 3 до 15 минут</p>
@@ -212,7 +216,7 @@ const AlertCopy = ({ message}) => {
             </div>
             <div className="depth-frame-2">
                 <div className="depth-frame-3">
-                    <div className="text-wrapper">{message === 'fuly paid' && (
+                    <div className="text-wrapper">{message === 'fully paid' && (
                         <p>и приступайте к торговле!</p>
                     )}      {message === 'still processing' && (
                         <p>Сохраните чек и ожидайте</p>
@@ -231,8 +235,10 @@ const AlertCopy = ({ message}) => {
             </div>
             <div className="depth-frame-8">
                 <div className="depth-frame-3">
-                    <p className="text-wrapper-4">Дабы избежать неприятных ситуаций, после оплаты обьязательно сохраните чек и номер заявки</p> 
+                    <p className="text-wrapper-4">Дабы избежать неприятных ситуаций, после</p> 
+		<p className="text-wrapper-4">оплаты обьязательно сохраните чек и № заявки</p>
                 </div>
+
             </div>
             
             <div className="depth-frame-98">

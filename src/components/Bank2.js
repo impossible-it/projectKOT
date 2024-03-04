@@ -45,7 +45,7 @@ const BankPage = ({}) => {
             
             <div className="depth-frame-2">
                 <div className="depth-frame-3">
-                    <div className="text-wrapper">Альберт Альбертович,</div>
+                    <div className="text-wrapper">Уважаемый клиент</div>
                 </div>
             </div>
             <div className="depth-frame-4">
@@ -55,7 +55,10 @@ const BankPage = ({}) => {
             </div>
             <div className="depth-frame-8">
                 <div className="depth-frame-3">
-                    <p className="text-wrapper-4">Прежде чем выбирать, пожалуйста убедитесь что на вашем счету достаточно средств для произоведение платежа!</p> 
+                    <p className="text-wrapper-4">Прежде чем выбирать, пожалуйста</p> 
+	   
+	    	<p className="text-wrapper-4">убедитесь что на вашем счету достаточно</p>
+	    	<p className="text-wrapper-4">средст для произведение платежа!</p>
                 </div>
             </div>
             <div className="depth-frame-2">

@@ -1,6 +1,12 @@
 .status-photo {
+	display: flex;
+	flex-direction: column;
+	
     height: 30%;
     width: 100%;
+}
+.loader-contain {
+    padding: 3rem!important;
 }
 .status-photo-text {
     display: flex;
@@ -110,7 +116,7 @@
     display: inline-block;
     box-sizing: border-box;
     text-shadow: 1px 1px black;
-    animation: floating 1s ease-out infinite alternate;
+    animation: floating 1.5s ease-out infinite alternate;
   }
   .loader-2::after {
     content: '';  
@@ -119,11 +125,11 @@
     background: rgba(0, 0, 0, 0.15);
     position: absolute;
     left: 0;
-    top: 100%;
+    top: 200%;
     filter: blur(4px);
     border-radius: 50%;
     box-sizing: border-box;
-    animation: animloader 1s ease-out infinite alternate;
+    animation: animloader 1.5s ease-out infinite alternate;
   }
   
   @keyframes floating {
@@ -146,7 +152,7 @@
   .c-container {
     max-width: 27rem;
     height: 77%;
-    
+    margin: 0 auto; 
     padding: 1rem;
   }
   
@@ -331,7 +337,13 @@
   }
  
 @media only screen and (max-width: 768px) {
-    .galileo-design .text-wrapper {
+ 	.status-photo {
+		height: 25%;
+	}
+        .loader-contain {
+	padding: 1rem!important;
+}	
+    	.galileo-design .text-wrapper {
         
         font-size: 20px;
     }
@@ -353,4 +365,9 @@
       .loader-3 {
         font-size: 36px;
       }
+}
+@media only screen and (max-width 1200px) {
+	.loader-2::before {
+		font-size: 40px;
+	}
 }

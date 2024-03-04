@@ -12,7 +12,7 @@
     background-color: #f7f9f9; 
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 110vh;
     position: relative;
     width: 100%;
 }
@@ -256,7 +256,7 @@
     }
     
     .galileo-design .depth-frame {
-        height: 150vh;
+        height: 160vh;
     }
     .depth-frame-wrapper-99 {
         width: 100%;
@@ -267,6 +267,7 @@
     }
     .galileo-design .text-wrapper-4 {
         white-space: wrap;
+	word-break: break-word;
         font-size: 12px;
     }
     .text-wrapper-99 {
