@@ -91,6 +91,11 @@
     border-radius: 20px;
 
 }
+.depth-frame-wrapper-99:hover {
+    background-color: #d4d4d4;
+
+    border-radius: 1re;
+}
 .depth-frame-wrapper-99-active {
     background-color: #198754;
 
@@ -249,12 +254,21 @@
         width: 90%;
         height: 10%;
     }
+    .image-block-99 > img {
+        width: 40px;
+        height: 40px;
+    }
+    .text-wrapper-99 {
+        font-size: 18px;
+    }
 }
 @media only screen and (max-width: 768px) { 
     .galileo-design .div {
         width: 90%;
     }
-    
+    .depth-frame-wrapper-99:hover {
+        background-color: #198754;
+    }
     .galileo-design .depth-frame {
         height: 160vh;
     }

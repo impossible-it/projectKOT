@@ -15,7 +15,7 @@ const LoadingOverlay = () => {
     useEffect(() => {
       const timeoutId = setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 5000);
       return () => {
         // Очистка таймера при размонтировании компонента
         clearTimeout(timeoutId);
@@ -387,7 +387,9 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                         </div>
                             <div className="depth-frame-8">
                                 <div className="depth-frame-3">
-                                    <div className="text-wrapper-4 wrapper-4-decor">Нажмите сюда если нужна помощь</div>
+                                    <div className="text-wrapper-4 wrapper-4-decor">
+                                    <a href="mailto:support@paylinl.world?subject=Help%20Помощь&body=Здравствуйте,%20PayLink,%20я%20нуждаюсь%20в%20вашей%20помощи.%20" target="_blank">Нажмите сюда, если нужна помощь</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

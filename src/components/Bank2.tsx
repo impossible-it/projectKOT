@@ -1,9 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
 import '../components/bank2__style.css'
 import '../components/loading-bar.css'
 import tinkoff from '../components/img/tinkoff.svg'
-import { TbClick } from "react-icons/tb";
 import Button from 'react-bootstrap/Button';
 import sberlogo from '../components/img/sber.svg'
 import vtblogo from '../components/img/vtb.png'
@@ -13,9 +11,46 @@ import rnklogo from '../components/img/rnk.svg'
 import psblogo from '../components/img/psb.jpeg'
 import mtslogo from '../components/img/mts.png'
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useState, useRef } from 'react';
+import { RingLoader } from 'react-spinners';
+import { css } from '@emotion/react';
 
+interface FormProps {
+    name: string; 
+    
+}
 
-const BankPage = ({}) => {
+const LoadingOverlay = () => {
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      const timeoutId = setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+      return () => {
+        // Очистка таймера при размонтировании компонента
+        clearTimeout(timeoutId);
+      };
+    }, []);
+    const override = css`
+      display: block;
+      margin: 0 auto;
+      border-color: #198754;`;
+    if (!loading) {
+      return null; // Если загрузка завершена, компонент вернет null
+    }
+  
+    return (
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(255, 255, 255, 0.95)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
+        <RingLoader
+            color="#198754"
+            loading
+            size={150}
+            />
+      </div>
+    );
+  };
+const BankPage:React.FC<FormProps> = ({ name }) => {
     const [activeIndex, setActiveIndex] = useState(null);
 
     const toggleColor = (index) => {
@@ -32,8 +67,12 @@ const BankPage = ({}) => {
         { key: '7', name: 'Р Н К Б', logo: rnklogo ,class: 'rnkLogo'}, 
         { key: '8', name: 'Другой способ', logo: mtslogo ,class: 'mtsLogo'},
   ];
-  const navigate = useNavigate();
-  const buttonTypeNavigate = () => { navigate('/auth-usr/bank/order')}
+    const navigate = useNavigate();
+    const buttonTypeNavigate = () => { navigate('/auth-usr/bank/order')}
+    const storedData = localStorage.getItem('userdata');
+    const storedObject = JSON.parse(storedData);    
+    
+    name = storedObject && storedObject.name;
     return (
         
         
@@ -42,13 +81,14 @@ const BankPage = ({}) => {
             <div className="depth-frame-wrapper" >
             <div className="div-wrapper">
             <div className="div">
-            
+            <LoadingOverlay />
+
             <div className="depth-frame-2">
                 <div className="depth-frame-3">
-                    <div className="text-wrapper">Уважаемый клиент</div>
+                    <div className="text-wrapper">{name},</div>
                 </div>
             </div>
-            <div className="depth-frame-4">
+            <div className="depth-frame-2">
                 <div className="depth-frame-3">
                     <div className="text-wrapper">Выберите Ваш источник оплаты</div>
                 </div>

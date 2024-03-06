@@ -5,8 +5,42 @@ import Button from 'react-bootstrap/Button';
 import { LuCopyPlus } from "react-icons/lu";
 import { useEffect, useState, useRef } from 'react';
 import { useTimer } from 'react-timer-hook';
-import { SquareLoader } from 'react-spinners';
+import { RingLoader } from 'react-spinners';
+import { css } from '@emotion/react';
 
+
+
+
+const LoadingOverlay = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => {
+      // Очистка таймера при размонтировании компонента
+      clearTimeout(timeoutId);
+    };
+  }, []);
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: #198754;`;
+  if (!loading) {
+    return null; // Если загрузка завершена, компонент вернет null
+  }
+
+  return (
+    <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(255, 255, 255, 0.95)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
+      <RingLoader
+          color="#198754"
+          loading
+          size={150}
+          />
+    </div>
+  );
+};
 interface FormProps {
     order: number;
   }
@@ -15,7 +49,7 @@ interface FormProps {
     const [expiryTimestamp, setExpiryTimestamp] = useState(() => {
       // Получаем сохраненное время из локального хранилища при первой загрузке
       const storedTime = localStorage.getItem('expiryTimestamp');
-      return storedTime ? parseInt(storedTime, 10) : new Date().getTime() + 30 * 60000; // Устанавливаем 30 минут, если нет сохраненного значения
+      return storedTime ? parseInt(storedTime, 10) : new Date().getTime() + 20 * 60000; // Устанавливаем 20 минут, если нет сохраненного значения
     });// Например, устанавливаем время на 10 секунд
   
     // Получаем сохраненное время из локального хранилища при первой загрузке
@@ -76,7 +110,7 @@ const AlertCopy = ({ message}) => {
               'Accept': 'application/json',
             }});
 	    const check = 0;
-            console.log(response);
+            // console.log(response);
             const data = await response.json();
     
             if (data && data.length > 0) {
@@ -84,8 +118,8 @@ const AlertCopy = ({ message}) => {
               const { result, message } = obj;
               localStorage.setItem('Resultation', result);
               localStorage.setItem('ResultMessage', message);
-              console.log(result);
-              console.log(message);   
+              // console.log(result);
+              // console.log(message);   
               switch (message) {
                 case 'still processing': 
                 setInterval( () => setLoadingProp(77), 2000)
@@ -95,21 +129,20 @@ const AlertCopy = ({ message}) => {
                 setInterval( () => setLoadingProp(100), 2000)
                 if (check<=0) {
 		setInterval( () => window.location.reload(), 20000)
-		check = 1;
+		check = 100;
 }
                 break;
                 case 'trade archived': 
                 setInterval( () => setLoadingProp(0), 2000)
                 setInterval( () => window.location.reload(), 60000)
                 default:
-               
                 break;
               }           
             } 
           } catch (error) {
-            console.error('Error fetching data:', error);
+            // console.error('Error fetching data:', error);
             setInterval( () => setLoadingProp(0), 2000)
-            setInterval( () => window.location.reload(), 20000)
+            setInterval( () => window.location.reload(), 5000)
           } 
         }; fetchData();
       }, [])
@@ -148,6 +181,8 @@ const AlertCopy = ({ message}) => {
             <div className="depth-frame-wrapper" >
             <div className="div-wrapper">
             <div className="div">
+            <LoadingOverlay />
+
             <div className="depth-frame-5">
                             <div className="depth-frame-6">
                                 <div className="depth-frame-7">
@@ -246,7 +281,9 @@ const AlertCopy = ({ message}) => {
             </div> 
             <div className="depth-frame-8">
                 <div class="depth-frame-3">
-                    <div class="text-wrapper-4 wrapper-4-decor">Нажмите сюда если нужна помощь</div>
+                    <div class="text-wrapper-4 wrapper-4-decor">
+                    <a href="mailto:support@paylinl.world?subject=Help%20Помощь&body=Здравствуйте,%20PayLink,%20я%20нуждаюсь%20в%20вашей%20помощи.%20" target="_blank">Нажмите сюда, если нужна помощь</a>
+                    </div>
                 </div>
                 </div>  
             </div>

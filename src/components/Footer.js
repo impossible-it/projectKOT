@@ -74,7 +74,7 @@ const EndlPage = () => {
     // </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark bottom">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">PAYFLK</a>
+        <a class="navbar-brand" href="#!">PAYLINK</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
@@ -98,20 +98,20 @@ const EndlPage = () => {
     </div>
     <div className="row">
              <div className="col-12 footer-bottom">
-                    <p className="footer-disclaimer">© 2023 PaymentHiGroup brand is owned and operated by Coursados Education s.r.o. 17302293 registered at Mesiniu St. 5, Vilnius, 01133, Lithuania. MESSANGER CHAT SUPPORT +4366565166182.
+                    <p className="footer-disclaimer">© 2023 Бренд PaylinkGroup принадлежит и управляется компанией Coursados ​​Education s.r.o. 17302293 зарегистрирован по адресу: ул. Месиню, 5, Вильнюс, 01133, Литва. Чат поддержка +7 911 887 68 58.
                 </p>
                 <p className="footer-disclaimer">
-                     The material on this website is for general educational purposes only and comprises personal opinions and ideas.
-                     It should not be interpreted as containing any type of financial advice. The material does not suggest purchasing financial services,
-                     nor does it guarantee the performance or outcome of future transactions.
-                     Operations mentioned in this material can be considered high-risk transactions and it is possible that by trading you may sustain significant investment losses,
-                     possibly including the loss of money in your account. When trading, you must always take into consideration your level of experience and seek independent financial advice if necessary.
-                     The accuracy, validity, or completeness of this information is not guaranteed and no liability is assumed for any direct or indirect loss related to any investment based on the material.
+                Материалы на этом сайте предназначены только для общеобразовательных целей и содержат личные мнения и идеи.
+                     Его не следует интерпретировать как содержащий какой-либо финансовый совет. Материал не предполагает приобретение финансовых услуг,
+                     он также не гарантирует производительность или результат будущих транзакций.
+                     Операции, упомянутые в этом материале, можно отнести к сделкам с высоким риском, и возможно, что, торгуя, вы можете понести значительные инвестиционные потери.
+                     возможно, включая потерю денег на вашем счете. При торговле вы всегда должны учитывать свой уровень опыта и при необходимости обращаться за независимой финансовой консультацией.
+                     Точность, достоверность или полнота этой информации не гарантируется, и мы не несем ответственности за любые прямые или косвенные убытки, связанные с любыми инвестициями, основанными на материале.
                  </p>
                <br></br>
                  <p className="footer-disclaimer">
-                     The information on this site is not directed at residents of any particular country outside the company base country and
-                is not intended for distribution to, or use by, any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation.
+                 Информация на этом сайте не предназначена для жителей какой-либо конкретной страны за пределами страны базирования компании и
+                не предназначено для распространения или использования каким-либо лицом в любой стране или юрисдикции, где такое распространение или использование противоречило бы местному законодательству или правилам.
                 </p>
                 
                <div className='social-club'>

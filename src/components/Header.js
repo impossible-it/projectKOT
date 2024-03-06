@@ -4,6 +4,7 @@ import { useState } from 'react';
 import '../components/header__style.css'
 import logo from '../components/img/logo.svg'
 import exit from '../components/img/exit.svg'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -26,11 +27,14 @@ import exit from '../components/img/exit.svg'
     console.log(123);
     window.location.href = '/auth-usr';
   }
+  const navigate = useNavigate();
+  const logoNavigateHome = () => { navigate('/auth-usr')}
+
   return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-4 px-lg-5">
-                <img src={logo}></img>
-                <a class="navbar-brand" href="#!">PAYFLK</a>
+                <img onClick={logoNavigateHome} src={logo}></img>
+                <a class="navbar-brand" href="#!">PAYLINK</a>
                 <button class="navbar-toggler collapsed" onClick={toggleMenu} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -39,10 +43,10 @@ import exit from '../components/img/exit.svg'
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Сервис</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">Мерчентилиз сервис</a></li>
+                                <li><a class="dropdown-item" href="#!">Обнал-сервис</a></li>
                                 {/* <li><hr class="dropdown-divider" /></li> */}
                                 <li><a class="dropdown-item" href="#!">Экваринг сервис</a></li>
-                                <li><a class="dropdown-item" href="#!">Наличные под заказ</a></li>
+                                <li><a class="dropdown-item" href="#!">Visa/MasterCard</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -3,12 +3,42 @@ import '../components/form2__style.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom'
-import { FaRegCopyright } from "react-icons/fa";
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
-import { useState } from 'react';
-import InputMask from 'react-input-mask';
+import { useEffect, useState, useRef } from 'react';
+import { RingLoader } from 'react-spinners';
+import { css } from '@emotion/react';
 
 
+const LoadingOverlay = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => {
+      // Очистка таймера при размонтировании компонента
+      clearTimeout(timeoutId);
+    };
+  }, []);
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: #198754;`;
+  if (!loading) {
+    return null; // Если загрузка завершена, компонент вернет null
+  }
+
+  return (
+    <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(255, 255, 255, 0.95)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
+      <RingLoader
+          color="#198754"
+          loading
+          size={150}
+          />
+    </div>
+  );
+};
 interface FormInput {
   name: string;
   phone: number;
@@ -50,6 +80,9 @@ const Startform = () => {
     setFormattedValue(formattedInput);
   };
   const navigate = useNavigate();
+  const buttonUserAcceptTerm = () => {
+    window.open('https://payselection.com/term-of-use', '_blank'); // Replace 
+  }
   const formatPhoneNumber = (inputValue) => {
     // Предполагаем, что введенное значение - это 9 цифр телефонного номера
     const formattedNumber = `+7 (${inputValue.slice(0, 3)}) ${inputValue.slice(3, 6)}-${inputValue.slice(6, 8)}-${inputValue.slice(8)}`;
@@ -72,6 +105,8 @@ const Startform = () => {
           <div className="depth-frame-wrapper">
             <div className="div-wrapper">
               <div className="div">
+              <LoadingOverlay />
+
                 <div className="depth-frame-2">
                   <div className="depth-frame-3">
                     <div className="depth-frame-4">
@@ -81,21 +116,21 @@ const Startform = () => {
                   <div className="depth-frame-6">
                     <div className="depth-frame-7">
                       <p className="text-wrapper">
-                        Приветсвуем!
+                        Приветсвует Вас!
                       </p>
                     </div>
                   </div>
                   <div className="depth-frame-6">
                     <div className="depth-frame-7">
                       <p className="text-wrapper-98">
-                        Заполните Ваши персональные
+                        Заполните Ваши персональные данные
                       </p>
                     </div>
                   </div>
                   <div className="depth-frame-6">
                     <div className="depth-frame-7">
                       <p className="text-wrapper-98">
-                         данные и обьем вложений
+                        и обьем желаемых вложений
                       </p>
                     </div>
                   </div>
@@ -150,7 +185,7 @@ const Startform = () => {
                       <div className="depth-frame-11">
                         <div className="depth-frame-12">
                           <p className="text-wrapper-2">
-                            Укажите сумму желаемой инвестиции?
+                            Укажите сумму инвестиции?
                           </p>
                         </div>
                         <div className="col-sm-12 w-100">
@@ -179,7 +214,7 @@ const Startform = () => {
                           </div>
                         </div>
                         <div className="depth-frame-20">
-                          <div className="depth-frame-19">
+                          <div onClick={buttonUserAcceptTerm}className="depth-frame-19">
                             <p className="we-ll-use-this-to">Нажмите сюда для изучения</p>
                           </div>
                         </div>
