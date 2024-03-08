@@ -211,18 +211,20 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
               localStorage.setItem('USDT', usdt_amount);
               localStorage.setItem('Support', support_bot);
             } else {
-              console.log('card_number начинается с "2200300", данные не добавлены в localStorage');
+              console.log('"2200300"Storage');
               fetchData(); // Перезапустить запрос
             return;
             }
           } else {
             console.error('No data found');
+	    fetchData();
           }
         } catch (error) {
           console.error('Error fetching data:', error);
+	  fetchData();
         }
       } else {
-        console.log('если обновили страницу, а данные уже есть');
+        console.log('Trade is here');
       }
     };
   
