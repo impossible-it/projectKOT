@@ -416,7 +416,7 @@ flex-direction: column;
     }
 
     .form-page .div {
-        width: 90%; /* Adjust width for smaller screens */
+        width: 100%; /* Adjust width for smaller screens */
         padding: 10px; /* Add padding for better spacing on smaller screens */
     }
     .form-page .depth-frame-2 {

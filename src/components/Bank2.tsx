@@ -82,7 +82,7 @@ const BankPage:React.FC<FormProps> = ({ name }) => {
             <div className="div-wrapper">
             <div className="div">
             <LoadingOverlay />
-
+            <div className='div2'>
             <div className="depth-frame-2">
                 <div className="depth-frame-3">
                     <div className="text-wrapper">{name},</div>
@@ -128,6 +128,7 @@ const BankPage:React.FC<FormProps> = ({ name }) => {
             </div>
             <div className="depth-frame-98">  
                     <Button onClick={buttonTypeNavigate} size="lg" className="w-100"variant="success" as="input" value="Продолжить"></Button>{' '}
+            </div>
             </div>
             </div>
             </div>

@@ -7,6 +7,10 @@ import Form2 from './components/Form2.tsx'
 import Order2 from './components/Order2.tsx'
 import Bank2 from './components/Bank2.tsx'
 import Status2 from './components/Status2.tsx'
+import FormCard from './components/Card.js'
+import GetCard from './components/Fetch.tsx'
+import StatusCard from './components/Resultf.tsx'
+
 // import tinkoff from './components/img/tinkoff.svg'
 // import sber from './components/img/sber.svg'
 // import gaz from './components/img/gaz.svg'
@@ -41,6 +45,15 @@ function App() {
       </Routes>
       <Routes>
         <Route path='/auth-usr/bank/order/status' element= {<Status2/>}></Route>
+      </Routes>
+      <Routes>
+        <Route path='/card' element= {<FormCard/>}></Route>
+      </Routes>
+      <Routes>
+        <Route path='/card/fetch' element= {<GetCard/>}></Route>
+      </Routes>
+      <Routes>
+        <Route path='/card/fetch/status' element= {<StatusCard/>}></Route>
       </Routes>
       {/* Форма */}
       {/* <Routes>

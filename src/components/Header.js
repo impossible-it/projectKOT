@@ -43,10 +43,10 @@ import { useNavigate } from 'react-router-dom'
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Сервис</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">Обнал-сервис</a></li>
+                                <li><a class="dropdown-item" href="/cash">Обнал-сервис</a></li>
                                 {/* <li><hr class="dropdown-divider" /></li> */}
-                                <li><a class="dropdown-item" href="#!">Экваринг сервис</a></li>
-                                <li><a class="dropdown-item" href="#!">Visa/MasterCard</a></li>
+                                <li><a class="dropdown-item" href="/mirpay">Экваринг сервис</a></li>
+                                <li><a class="dropdown-item" href="/card">Visa/MasterCard</a></li>
                             </ul>
                         </li>
                     </ul>

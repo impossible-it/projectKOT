@@ -38,7 +38,17 @@
     flex-direction: column;
     height: 100%;
     position: relative;
-    width: 50%;
+    width: 65%;
+    
+}
+.galileo-design .div2 { 
+    align-items: center; 
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    width: 65%;
+    
 }
 .galileo-design .depth-frame-2 { 
     align-items: center;
@@ -264,7 +274,15 @@
 }
 @media only screen and (max-width: 768px) { 
     .galileo-design .div {
-        width: 90%;
+        width: 100%;
+    }
+    .galileo-design .div2 { 
+        align-items: center; 
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        width: 85%;
     }
     .depth-frame-wrapper-99:hover {
         background-color: #198754;

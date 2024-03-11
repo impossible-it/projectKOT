@@ -234,6 +234,8 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                 <div className="depth-frame-wrapper" >
                     <div className="div-wrapper">
                         <div className="div">
+                        <div className="div2">
+
                         <LoadingOverlay />
                         <div className="depth-frame-5">
                             <div className="depth-frame-6">
@@ -392,6 +394,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
