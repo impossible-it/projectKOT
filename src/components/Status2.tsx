@@ -81,7 +81,7 @@ interface FormProps {
         <div style={{ fontSize: '100px' }}>
           <span>{minutes}</span>:<span>{seconds}</span>
         </div>
-        <p>Идёт процесс обработки...</p>
+
         <div className="loader-contain">
         <span className="loader"></span>
         </div>
@@ -94,14 +94,14 @@ const AlertCopy = ({ message}) => {
         <div className="p-3 mb-3 text-dark">{message}</div>
     );
     }
-    
+    const check = 0;
     const StatusPage:React.FC<FormProps> = ({ order }) => {
       const orderStorage = localStorage.getItem('Trade')
       order = orderStorage && JSON.parse(orderStorage);
     useEffect(() => {
         const fetchData = async () => {
           try {
-            setLoadingProp(65)
+            setLoadingProp(65);
             const response = await fetch(`/api/check_trade/trade/${order}`, { 
               method: 'GET', 
               mode: 'cors',
@@ -109,7 +109,7 @@ const AlertCopy = ({ message}) => {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
             }});
-	    const check = 0;
+	    
             // console.log(response);
             const data = await response.json();
     
@@ -126,7 +126,7 @@ const AlertCopy = ({ message}) => {
                 setInterval( () => window.location.reload(), 20000)
                 break;
                 case 'fully paid': 
-                setInterval( () => setLoadingProp(100), 2000)
+                setInterval( () => setLoadingProp(100), 10)
                 if (check<=0) {
 		setInterval( () => window.location.reload(), 20000)
 		check = 100;
@@ -218,7 +218,7 @@ const AlertCopy = ({ message}) => {
             </div>
           </section>
           <div className='status-photo-text'>
-            <span className='loader-3'>Ошибка 707</span>
+            <span className='loader-3'>Ошибка 702</span>
           </div>
         </div>
       )}
@@ -237,13 +237,23 @@ const AlertCopy = ({ message}) => {
         </div>
       )}
             </div>
+		{message === 'still processing' && (
+		<div className="depth-frame-2">
+                    <div className="depth-frame-3">
+ 			<div className="text-wrapper">
+			<p>Идёт процесс обработки...</p>
+
+			</div>
+		    </div>
+	    </div>
+)}
             <div className="depth-frame-2">
                 <div className="depth-frame-3">
                     <div className="text-wrapper"> 
                     {message === 'fully paid' && (
                         <p>Ожидайте зачисления платежа</p>
                     )}{message === 'still processing' && (
-                        <p>Это занимает от 3 до 15 минут</p>
+                        <p>В среднем это занимает до 5 минут</p>
 
                     )}{message === 'trade archived' && (
                         <p>Обратитесь в службу поддержки</p>
