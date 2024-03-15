@@ -67,7 +67,7 @@ const LoadingOverlay = () => {
                             </div>
                             <div className="depth-frame-2">
                                 <div className="depth-frame-3">
-                                    <div className="text-wrapper mb-4">Вы успешно закрепили способ оплаты!</div>
+                                    <div className="text-wrapper mb-4">Успешно закреплено!</div>
                                 </div>
                                 <div className="depth-frame-3">
                                     <div className="text-wrapper mb-4">Приступайте к торговле!</div>

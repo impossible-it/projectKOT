@@ -118,8 +118,8 @@ const CardPage = ({}) => {
             </div>
             
             <div className="depth-frame-98">  
-                    <Button onClick={buttonInfo}size="lg" className="w-30 m-2"variant="dark" as="input" value="Информация"></Button>{' '}
-                    <Button onClick={buttonTypeNavigate}size="lg" className="w-30 m-2"variant="success" as="input" value="Приступить"></Button>{' '}
+                    <Button onClick={buttonInfo}size="lg" className="w-50 m-2"variant="dark" as="input" value="Информация"></Button>{' '}
+                    <Button onClick={buttonTypeNavigate}size="lg" className="w-50 m-2"variant="success" as="input" value="Приступить"></Button>{' '}
             </div>
             </div>
             </div>

@@ -103,7 +103,7 @@
 }
 .depth-frame-wrapper-99:hover {
     background-color: #d4d4d4;
-
+    color: black;
     border-radius: 1re;
 }
 .depth-frame-wrapper-99-active {
@@ -196,9 +196,9 @@
         background-color: #198754;
     }
 .image-block-99 > img {
-    
-    width: 80px;
-    height: 80px;
+    margin: 0px 10px;
+    width: 70px;
+    height: 70px;
 }
 .text-wrapper-99 {
     justify-content: start;

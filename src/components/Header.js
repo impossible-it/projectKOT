@@ -1,6 +1,6 @@
 // src/components/Header.js
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../components/header__style.css'
 import logo from '../components/img/logo.svg'
 import exit from '../components/img/exit.svg'
@@ -15,13 +15,19 @@ import { useNavigate } from 'react-router-dom'
     window.location.href = "https://www.google.com";
   }
   const [menuOpen, setMenuOpen] = useState(false);
-
+ 	
 
   const toggleMenu = () => {
         setMenuOpen(!menuOpen);
         console.log(512);
     };
-  
+
+
+    // Здесь можно добавить дополнительные условия для определения, разрешает ли браузер закрытие
+	//     // В данном примере всегда разрешаем закрытие вк	           
+
+
+
 
   const clickToHome = () => { 
     console.log(123);
@@ -50,8 +56,9 @@ import { useNavigate } from 'react-router-dom'
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-light" type="submit">
+                    <form onClick={redirectToWebsite} class="d-flex">
+                        <button class="btn btn-outline-light" >
+	  
                             <i class="bi-cart-fill me-1"></i>
                             Торговать
       

@@ -186,6 +186,7 @@
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-top: 15px;
 }
 .galileo-design .depth-frame-11 {
     align-items: start; 
@@ -194,30 +195,27 @@
     border-radius: 15px; 
     display: flex;
     flex-direction: row;
-    height: 100px;
-    width: 40%;
-    margin: 20px;
-    
+    width: 90%;
 }
 .galileo-design .depth-frame-12 { align-items: center; display: flex;
 flex-direction: column;
+
 height: 24px;
 position: relative;
-width:20%;
+width:15%;
 margin-bottom: 10px;
 }
 .galileo-design .vector-wrapper { height: 24px;
 position: relative;
 width: 24px;
 }
-.galileo-design .vector { height: 25px;
-
-width: 25px;
+.vector-wrapper>svg { 
+ height: 35px;
+ width: 35px;
 }
 .galileo-design .depth-frame-13 {
-align-items: center; display: flex;
+align-items: start; display: flex;
 flex-direction: column;
-
 height: 60px;
 position: relative;
 width:
@@ -227,7 +225,7 @@ width:
 .galileo-design .depth-frame-14 { align-items: center; display: flex;
 flex-direction: column;
 position: relative;
-
+padding: 5px 10px 
 }
 .galileo-design .p { 
     color: #295741; 
@@ -357,6 +355,20 @@ flex-direction: column;
 height: 21px;
 position: relative; width: 152.25px;
 }
+.text-wrapper-95 {
+		    color: #0c1c16;
+		        font-family: Epilogue, Helvetica;
+			    font-size: 18px;
+			        font-weight: 700;
+				    letter-spacing: -.27px;
+				        line-height: 22.5px;
+					      position: relative;
+						    white-space: nowrap;
+						        width: -webkit-fit-content;
+							    width: -moz-fit-content;
+							        width: fit-content;
+							
+}
 .galileo-design .text-wrapper-7 {
 color: #ffffff;
 text-shadow: 1px 1px black;
@@ -386,7 +398,7 @@ margin-top: -1px; position: relative; white-space: nowrap; width: fit-content;
     } 
     .galileo-design .depth-frame-11 {
         width: 100%;
-        height: 50px;
+        height: 80px;
     }
     .galileo-design .text-wrapper-3 {
         font-size: 20px;

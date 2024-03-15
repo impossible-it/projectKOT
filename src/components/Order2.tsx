@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from 'react';
 import { css } from '@emotion/react';
 import { RingLoader } from 'react-spinners';
 import { useNavigate } from 'react-router-dom'
+import { IoChevronForwardCircleSharp } from "react-icons/io5";
 
 
 
@@ -85,7 +86,7 @@ const HomePage:React.FC<FormProps> = ({ client_number, name, sum, order_sum , ph
     const cardStorage = localStorage.getItem('Card'); // Переменная которую передаешь для копирования name
     const card = cardStorage && JSON.parse(cardStorage);
     var orderNumber = card;
-    var textToCopy = orderNumber.toString(); // Преобразуйте число в строку
+    var textToCopy = "Реквизит: " + orderNumber.toString(); // Преобразуйте число в строку
     var tempTextarea = document.createElement('textarea'); // Создайте временный элемент textarea для хранения текста
     tempTextarea.value = textToCopy;
     document.body.appendChild(tempTextarea);// Добавьте временный элемент textarea в документ
@@ -103,7 +104,8 @@ const handleButtonOrder = () => {
     const cardStorage = localStorage.getItem('Trade'); // Переменная которую передаешь для копирования name
     const card = cardStorage && JSON.parse(cardStorage);
     var orderNumber = card;
-    var textToCopy = orderNumber.toString(); // Преобразуйте число в строку
+    var textToCopy = "Заявка:  " + orderNumber.toString(); // Преобразуйте число в строку
+    var textToCopy
     var tempTextarea = document.createElement('textarea'); // Создайте временный элемент textarea для хранения текста
     tempTextarea.value = textToCopy;
     document.body.appendChild(tempTextarea);// Добавьте временный элемент textarea в документ
@@ -121,7 +123,7 @@ const handleButtonCount = () => {
     const cardStorage = localStorage.getItem('Amount'); // Переменная которую передаешь для копирования name
     const card = cardStorage && JSON.parse(cardStorage);
     var orderNumber = card;
-    var textToCopy = orderNumber.toString(); // Преобразуйте число в строку
+    var textToCopy = "Сумма транзакции:" + orderNumber.toString(); // Преобразуйте число в строку
     var tempTextarea = document.createElement('textarea'); // Создайте временный элемент textarea для хранения текста
     tempTextarea.value = textToCopy;
     document.body.appendChild(tempTextarea);// Добавьте временный элемент textarea в документ
@@ -257,7 +259,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                         <div className="depth-frame-5">
                             <div className="depth-frame-6">
                                 <div className="depth-frame-7">
-                                    <div className="text-wrapper-3">Ваш номер инвестиционного счёта</div>
+                                    <div className="text-wrapper-3">Реквизиты подвязанные к счёту</div>
                                 </div>
                             </div>
                         </div>
@@ -296,7 +298,8 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                             <div className="depth-frame-11">
                                 <div className="depth-frame-12">
                                     <div className="vector-wrapper">
-                                        <img className="vector" alt="Vector" src="https://cdn-icons-png.flaticon.com/512/5692/5692186.png"                    />
+                                        <IoChevronForwardCircleSharp />
+
                                     </div>
                                 </div>
                                 <div className="depth-frame-13">
@@ -310,7 +313,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                             <div className="depth-frame-11">
                                 <div className="depth-frame-12">
                                     <div className="vector-wrapper">
-                                        <img className="vector" alt="Vector" src="https://cdn-icons-png.flaticon.com/512/5692/5692186.png"                    />
+					<IoChevronForwardCircleSharp />                                       
                                     </div>
                                 </div>
                                 <div className="depth-frame-13">
@@ -324,7 +327,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                             <div className="depth-frame-11">
                                 <div className="depth-frame-12">
                                     <div className="vector-wrapper">
-                                        <img className="vector" alt="Vector" src="https://cdn-icons-png.flaticon.com/512/5692/5692186.png"                    />
+					<IoChevronForwardCircleSharp />                                        
                                     </div>
                                 </div>
                                 <div className="depth-frame-13">
@@ -338,7 +341,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                             <div className="depth-frame-11">
                                 <div className="depth-frame-12">
                                     <div className="vector-wrapper">
-                                        <img className="vector" alt="Vector" src="https://cdn-icons-png.flaticon.com/512/5692/5692186.png"                    />
+                                       <IoChevronForwardCircleSharp />
                                     </div>
                                 </div>
                                 <div className="depth-frame-13">
@@ -354,7 +357,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                             <div className="depth-frame-23">
                                 <div className="depth-frame-24">
                                     <div className="depth-frame-28"> <div className="depth-frame-7">
-                                        <div className="text-wrapper-5">{formatMinute(remainingTime)}</div>
+                                        <div className="text-wrapper-95">{formatMinute(remainingTime)}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -369,7 +372,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                             <div className="depth-frame-23">
                                 <div className="depth-frame-24">
                                     <div className="depth-frame-25"> <div className="depth-frame-7">
-                                        <div className="text-wrapper-5">{formatSecond(remainingTime)}</div>
+                                        <div className="text-wrapper-95">{formatSecond(remainingTime)}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -383,12 +386,11 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                             </div>
                             </div>
                             <div className="depth-frame-98">
-                                <Button onClick={buttonStatusNavigate}size="lg" className="w-100" variant="success" as="input" value="Продолжить"></Button>{' '}
-                            </div>
-                            <div className="depth-frame-98">
-                            <Button onClick={buttonStatusNavigate}size="lg" className="w-100" variant="secondary" as="input" value="Отменить"></Button>{' '}
-
-                        </div>
+                                <Button onClick={buttonStatusNavigate}size="lg" className="w-100" variant="secondary" as="input" value="Отменить"></Button>{' '}
+				<span className="p-2"></span>
+				<Button onClick={buttonStatusNavigate} size="lg" className="w-100" variant="success" as="input" value="Продолжить"></Button>{' '}                          
+ </div>
+                      
                             <div className="depth-frame-8">
                                 <div className="depth-frame-3">
                                     <div className="text-wrapper-4 wrapper-4-decor">

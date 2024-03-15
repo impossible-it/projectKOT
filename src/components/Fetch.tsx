@@ -156,13 +156,13 @@ const LoadingOverlay = () => {
                                                 <div className='form-control-text p-3'>Выберите тип вашей карты</div>
                                                     <div className='btn-group-frame w-75'>
                                                         <div className="btn-group w-50 " role="group" aria-label="Basic radio toggle button group"> 
-                                                            <input type="radio" className="btn-check" name="btnradio" id="btnradio1" checked/>
-                                                            <label className="btn btn-outline-dark" ><span className="pe-1"></span>Кредитная</label>
+                                                            <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked/>
+                                                            <label className="btn btn-outline-dark" for="btnradio1"><span className="pe-1"></span>Кредитная</label>
                                                         </div> 
                                                         <IoSwapHorizontal/>
                                                         <div className="btn-group w-50 " role="group" aria-label="Basic radio toggle button group"> 
-                                                            <input type="radio" className="btn-check" name="btnradio" id="btnradio2"/> 
-                                                            <label className="btn btn-outline-dark"><span className="lpe-1"></span>Дебетовая</label>
+                                                            <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autocomplete="off"/> 
+                                                            <label className="btn btn-outline-dark" for="btnradio2"><span className="lpe-1"></span>Дебетовая</label>
                                                         </div> 
                                                     </div>
                                                 </div>
