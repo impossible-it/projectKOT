@@ -10,6 +10,7 @@ import Status2 from './components/Status2.tsx'
 import FormCard from './components/Card.js'
 import GetCard from './components/Fetch.tsx'
 import StatusCard from './components/Resultf.tsx'
+import Mobile from './components/mobile/Mobile.tsx'
 
 // import tinkoff from './components/img/tinkoff.svg'
 // import sber from './components/img/sber.svg'
@@ -54,6 +55,9 @@ function App() {
       </Routes>
       <Routes>
         <Route path='/card/fetch/status' element= {<StatusCard/>}></Route>
+      </Routes>
+      <Routes>
+        <Route path='/mobile' element= {<Mobile/>}></Route>
       </Routes>
       {/* Форма */}
       {/* <Routes>

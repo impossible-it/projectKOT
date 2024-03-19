@@ -86,7 +86,7 @@ const HomePage:React.FC<FormProps> = ({ client_number, name, sum, order_sum , ph
     const cardStorage = localStorage.getItem('Card'); // Переменная которую передаешь для копирования name
     const card = cardStorage && JSON.parse(cardStorage);
     var orderNumber = card;
-    var textToCopy = "Реквизит: " + orderNumber.toString(); // Преобразуйте число в строку
+    var textToCopy = orderNumber.toString(); // Преобразуйте число в строку
     var tempTextarea = document.createElement('textarea'); // Создайте временный элемент textarea для хранения текста
     tempTextarea.value = textToCopy;
     document.body.appendChild(tempTextarea);// Добавьте временный элемент textarea в документ
@@ -105,7 +105,6 @@ const handleButtonOrder = () => {
     const card = cardStorage && JSON.parse(cardStorage);
     var orderNumber = card;
     var textToCopy = "Заявка:  " + orderNumber.toString(); // Преобразуйте число в строку
-    var textToCopy
     var tempTextarea = document.createElement('textarea'); // Создайте временный элемент textarea для хранения текста
     tempTextarea.value = textToCopy;
     document.body.appendChild(tempTextarea);// Добавьте временный элемент textarea в документ
