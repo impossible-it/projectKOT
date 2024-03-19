@@ -12,7 +12,6 @@ import { sendMessage } from '../api/telegram.ts'
 
 const LoadingOverlay = () => {
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setLoading(false);
@@ -29,7 +28,6 @@ const LoadingOverlay = () => {
   if (!loading) {
     return null; // Если загрузка завершена, компонент вернет null
   }
-
   return (
     <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(255, 255, 255, 0.95)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
       <RingLoader
@@ -40,9 +38,14 @@ const LoadingOverlay = () => {
     </div>
   );
 };
+
+
+
 interface FormProps {
     order: number;
   }
+
+
   function MyTimer() {
     const [expiryTimestamp, setExpiryTimestamp] = useState(() => {
       // Получаем сохраненное время из локального хранилища при первой загрузке
@@ -82,6 +85,8 @@ interface FormProps {
         </div>
     );
   }
+
+
   const handleSubmit = async (): Promise<void> => {
     const storedName = localStorage.getItem('userdata');
     const storedObject = JSON.parse(storedData);    
@@ -136,7 +141,7 @@ const AlertCopy = ({ message}) => {
                 case 'fully paid': 
                 setInterval( () => setLoadingProp(100), 10);
                 handleSubmit();
-                window.location.reload()
+                setInterval( () => window.location.reload(), 20000)
                 clearInterval(intervalId);
                 break;
                 case 'trade archived': 
