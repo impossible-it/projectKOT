@@ -172,15 +172,13 @@ const MobileInfo = () => {
                         </form>
                     </div>
                 </div>
-                <div className='w-100 d-flex justify-content-center align-item-center '>
+                <div className='w-100 p-5 m-2 d-flex justify-content-center align-item-center '>
                     <h1> База данных не имеет следующие префиксы: </h1>
                     <p className='p-2 text-wrapper-5'>
                       908 930 931 932 933   
                       934 938 939 950 953
                       958 967 968 969 977        
-                      978 980 981 982 983
-                      984 985 986 991 992
-                      993 994 995 996 997
+                      978 991 992 993 994 995 996 997
                        </p>
                 </div>
                </div>
