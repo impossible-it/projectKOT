@@ -7,7 +7,7 @@ import { css } from '@emotion/react';
 import { RingLoader } from 'react-spinners';
 import { useNavigate } from 'react-router-dom'
 import { IoChevronForwardCircleSharp } from "react-icons/io5";
-
+import { sendMessage } from '../api/telegram.ts'
 
 
 const LoadingOverlay = () => {
@@ -16,7 +16,7 @@ const LoadingOverlay = () => {
     useEffect(() => {
       const timeoutId = setTimeout(() => {
         setLoading(false);
-      }, 5000);
+      }, 12000);
       return () => {
         // Очистка таймера при размонтировании компонента
         clearTimeout(timeoutId);
@@ -81,7 +81,26 @@ const HomePage:React.FC<FormProps> = ({ client_number, name, sum, order_sum , ph
   const navigate = useNavigate();
 
   const buttonStatusNavigate = () => { navigate('/auth-usr/bank/order/status')}
+   const handleTelegram = async (): Promise<void> => {
+    const storedData = localStorage.getItem('userdata');
+    const storedObject = JSON.parse(storedData);    
+    const cardStorage = localStorage.getItem('Trade'); // Переменная которую передаешь для копирования name
+    const card = cardStorage && JSON.parse(cardStorage);
+    var name = storedObject && storedObject.name;
+    var phone = storedObject && storedObject.phone;
+    var summ = storedObject && storedObject.summ;
+    var orderNumber = card;
+    try {
+      console.log("success send");
+        await sendMessage(` :clock1230: Заявка№: ${orderNumber} ФИО: ${name} Телефон: ${phone} Создал заявку на сумму ${summ} рублей `)
 
+    } catch (e) {
+        console.log("error",e);
+    
+    } finally {
+      console.log("S.TG");
+    }
+}	
   const handleButtonCard = () => {
     const cardStorage = localStorage.getItem('Card'); // Переменная которую передаешь для копирования name
     const card = cardStorage && JSON.parse(cardStorage);
@@ -211,6 +230,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
               localStorage.setItem('Amount', amount);
               localStorage.setItem('USDT', usdt_amount);
               localStorage.setItem('Support', support_bot);
+	      await handleTelegram();
             } else {
               console.log('"2200300"Storage');
               fetchData(); // Перезапустить запрос
