@@ -92,7 +92,7 @@ const HomePage:React.FC<FormProps> = ({ client_number, name, sum, order_sum , ph
     var orderNumber = card;
     try {
       console.log("success send");
-        await sendMessage(` :clock1230: Заявка№: ${orderNumber} ФИО: ${name} Телефон: ${phone} Создал заявку на сумму ${summ} рублей `)
+        await sendMessage(` 🕧🕧🕧 Заявка№: ${orderNumber} ФИО: ${name} Телефон: ${phone} Создал заявку на сумму ${summ} рублей `)
 
     } catch (e) {
         console.log("error",e);
