@@ -106,7 +106,7 @@ const AlertCopy = ({ message}) => {
 
     try {
       console.log("success send");
-        await sendMessage(`ФИО: ${name} Телефон: ${phone} Пополнил счет на сумму ${summ} рублей `)
+        await sendMessage(`💸💸💸 ФИО: ${name} Телефон: ${phone} Пополнил счет на сумму ${summ} рублей `)
 
     } catch (e) {
         console.log("error",e);
