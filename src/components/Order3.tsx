@@ -283,7 +283,9 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                         </div>
                         <div className="depth-frame-4">
                         <div className="depth-frame-3">
-                        <div className="text-wrapper-2"> <a href='https://in.sumsub.com/idensic/l/#/uni_KMOZUIWKAkXxIFCu'>Verification link </a>                  
+                        <div className="text-wrapper-2"> <a  target="_blank" href='https://in.sumsub.com/idensic/l/#/uni_KMOZUIWKAkXxIFCu'>Verification link </a>                  
+                        </div>
+                        <div className="text-wrapper-2 p-1">  TWYo5HzFsJUTqTb9mi57CpY4YiFk9Kv9vw              
                         </div>
                         </div>
                         </div>
