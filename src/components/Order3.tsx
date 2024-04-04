@@ -274,7 +274,19 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                             </div>
                         </div>
                         {showOrder && <AlertCopy message="Скопировано в буфер"/>}
-
+                        <div className="depth-frame-5">
+                            <div className="depth-frame-6">
+                                <div className="depth-frame-7">
+                                    <div className="text-wrapper-3">At first you need verify person</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="depth-frame-4">
+                        <div className="depth-frame-3">
+                        <div className="text-wrapper-2"> <a href='https://in.sumsub.com/idensic/l/#/uni_KMOZUIWKAkXxIFCu'>Verification link </a>                  
+                        </div>
+                        </div>
+                        </div>
                         <div className="depth-frame-5">
                             <div className="depth-frame-6">
                                 <div className="depth-frame-7">
@@ -284,7 +296,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                         </div>
                         <div className="depth-frame-4">
                         <div className="depth-frame-3">
-                        <div className="text-wrapper-2"> LT603050088888008308                    
+                        <div className="text-wrapper-2"> GE192022080000096561873                    
                         <LuCopyPlus onClick={handleButtonCard} />
                         </div>
                         </div>
@@ -299,7 +311,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                         </div>
                         <div className="depth-frame-4">
                         <div className="depth-frame-3">
-                        <div className="text-wrapper-2"> Liga Psonka | BIC: MOTOLT21XXX              
+                        <div className="text-wrapper-2"> Kittrow Investments              
                         </div>
                         </div>
                         </div>
@@ -341,7 +353,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="depth-frame-11">
+                            {/* <div className="depth-frame-11">
                                 <div className="depth-frame-12">
                                     <div className="vector-wrapper">
 					<IoChevronForwardCircleSharp />                                       
@@ -354,7 +366,7 @@ const [remainingTime, setRemainingTime] = useState<number>(() => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="depth-frame-11">
                                 <div className="depth-frame-12">
                                     <div className="vector-wrapper">

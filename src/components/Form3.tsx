@@ -226,7 +226,7 @@ const Startform = () => {
                     </div>
                   </div>
                   <div className="depth-frame-25">
-                  <Button type="submit" size="lg" className="w-100" variant="success" as="input" value="Продолжить"></Button>{' '}
+                  <Button type="submit" size="lg" className="w-100" variant="success" as="input" value="Continue"></Button>{' '}
                   </div>
                   </form>
                 </div>
