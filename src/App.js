@@ -4,8 +4,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import Form2 from './components/Form2.tsx'
+import Form3 from './components/Form3.tsx'
+
 import Order2 from './components/Order2.tsx'
+import Order3 from './components/Order3.tsx'
+
 import Bank2 from './components/Bank2.tsx'
+import Bank3 from './components/Bank3.tsx'
+
 import Status2 from './components/Status2.tsx'
 import FormCard from './components/Card.js'
 import GetCard from './components/Fetch.tsx'
@@ -41,6 +47,17 @@ function App() {
       <Routes>
         <Route path='/auth-usr/bank/' element= {<Bank2/>}></Route>
       </Routes>
+
+      <Routes>
+        <Route path='/deutch' element= {<Form3/>}></Route>
+      </Routes>
+      <Routes>
+        <Route path='/deutch/bank/' element= {<Bank3/>}></Route>
+      </Routes>
+      <Routes>
+        <Route path='/deutch/bank/order' element= {<Order3/>}></Route>
+      </Routes>
+
       <Routes>
         <Route path='/auth-usr/bank/order' element= {<Order2/>}></Route>
       </Routes>
